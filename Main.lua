@@ -1,6 +1,8 @@
 local UI = game:GetObjects("rbxassetid://4814616806")[1]
 UI.Parent = game:GetService("CoreGui")
 
+loadstring(game:HttpGet("https://raw.githubusercontent.com/SykoticCataclysm/ExoToolV2/master/RemoteSpy.lua"))()
+
 local Frames = {
 	[UI.SelectFrame.RemoteSpyBtn] = UI.RemoteSpyFrame
 }
@@ -11,7 +13,7 @@ for i, v in pairs(Frames) do
 	end)
 end
 
-getgenv().UpdateRemote = function(name, icon)
+getgenv().UpdateRemote = function(name, classname, icon, args)
 	if not UI.RemoteSpyFrame.FiredFrame[name] then
 		local Template = UI.RemoteSpyFrame.TemplateFrame:Clone()
 		Template.Name, Template.Parent, Template.Visible = name, UI.RemoteSpyFrame.FiredFrame, true
