@@ -28,8 +28,8 @@ if game.PlaceId == 606849621 then
 				if type(d) == "table" and rawget(d, "FireServer") then
 					local Old = d.FireServer
 					d.FireServer = function(self, ...)
-						UpdateRemote("JailBreak Bypass", "RemoteEvent", "rbxassetid://4229806545", {...})
-						d.FireServer(self, ...)
+						Fired[#Fired + 1] = { "JailBreak Bypass", "RemoteEvent", "rbxassetid://4229806545", {...} }
+						Old(self, ...)
 					end
 				end
 			end
