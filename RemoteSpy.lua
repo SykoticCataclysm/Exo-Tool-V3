@@ -14,13 +14,16 @@ setreadonly(mt, false)
 mt.__namecall = function(obj, ...)
 	local Method = getnamecallmethod()
 	if Types[Method] then
+		print("Yes")
 		Fired[#Fired + 1] = { obj.Name, obj.ClassName, Types[Method][2], {...} }
 	end
 	return nc(obj, ...)
 end
 
-while wait() do
-	if #Fired > 0 then
-		UpdateRemote(unpack(table.remove(Fired, 1)))
+spawn(function()
+	while wait() do
+		if #Fired > 0 then
+			UpdateRemote(unpack(table.remove(Fired, 1)))
+		end
 	end
-end
+end)
