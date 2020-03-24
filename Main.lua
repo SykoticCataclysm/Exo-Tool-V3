@@ -1,7 +1,7 @@
 local UI = game:GetObjects("rbxassetid://4814616806")[1]
 UI.Parent = game:GetService("CoreGui")
 
-function GetType(Instance)
+getgenv().GetType = function(Instance)
 	local Types = {
 		EnumItem = function()
 			return "Enum." .. tostring(Instance.EnumType) .. "." .. tostring(Instance.Name)
@@ -51,8 +51,8 @@ getgenv().UpdateRemote = function(name, classname, icon, args)
 		Template.ItemName.Text = name
 		Template.TypeImg.Image = icon
 		Template.CallCount.Text = "1"
-		Template.CallsFrame.Title.Text = name
-		UI.RemoteSpyFrame.Main.FiredFrame.CanvasSize = UDim2.new(0, 0, 0, 10 + 30 * #UI.RemoteSpyFrame.Main.FiredFrame:GetChildren())
+		Template.CallsFrame.Title.Text = name	
+		UI.RemoteSpyFrame.Main.FiredFrame.CanvasSize = UDim2.new(0, 0, 0, 360 + 30 * #UI.RemoteSpyFrame.Main.FiredFrame:GetChildren())
 		Template.InputBegan:Connect(function(input)
 			if input.UserInputType == Enum.UserInputType.MouseButton1 then
 				Template.CallsFrame.Visible = not Template.CallsFrame.Visible
