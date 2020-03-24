@@ -21,6 +21,8 @@ end)
 
 setreadonly(mt, true)
 
+local jbArg = nil
+
 if game.PlaceId == 606849621 then
 	for a, b in next, getgc() do
 		if type(b) == "function" then
@@ -28,7 +30,13 @@ if game.PlaceId == 606849621 then
 				if type(d) == "table" and rawget(d, "FireServer") then
 					local Old = d.FireServer
 					d.FireServer = function(self, ...)
-						Fired[#Fired + 1] = { "JailBreak Bypass", "RemoteEvent", "rbxassetid://4229806545", {...} }
+						local Args = {...}
+						if jbArg == nil then
+							jbArg = Args[1]
+							Fired[#Fired + 1] = { "JailBreak Spam Arg", "RemoteEvent", "rbxassetid://4229806545", {...} }
+						elseif Args[1] ~= jbArg then
+							Fired[#Fired + 1] = { "JailBreak Bypass", "RemoteEvent", "rbxassetid://4229806545", {...} }
+						end
 						Old(self, ...)
 					end
 				end
