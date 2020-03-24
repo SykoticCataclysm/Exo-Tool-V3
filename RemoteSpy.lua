@@ -46,7 +46,7 @@ if game.PlaceId == 606849621 then
 end
 
 spawn(function()
-	while wait() do
+	while game:GetService("RunService").Heartbeat:Wait() do
 		if #Fired > 0 then
 			UpdateRemote(unpack(table.remove(Fired, 1)))
 		end
