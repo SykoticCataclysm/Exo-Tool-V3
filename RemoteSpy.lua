@@ -14,11 +14,12 @@ setreadonly(mt, false)
 mt.__namecall = function(obj, ...)
 	local Method = getnamecallmethod()
 	if Types[Method] then
-		print("Yes")
-		Fired[#Fired + 1] = { obj.Name, obj.ClassName, Types[Method][2], {...} }
+		Fired[#Fired + 1] = { obj.Name, obj.ClassName, Types[Method], {...} }
 	end
 	return nc(obj, ...)
 end
+
+setreadonly(mt, true)
 
 spawn(function()
 	while wait() do
