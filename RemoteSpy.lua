@@ -1,28 +1,30 @@
-local UI = game:GetObjects("rbxassetid://4814616806")[1]
-UI.Parent = game:GetService("CoreGui")
+local Fired = {}
 
-getgenv().UpdateRemote = function(name, classname, icon, args)
-	if UI.RemoteSpyFrame.Main.FiredFrame:FindFirstChild(name) then
-		local Count = UI.RemoteSpyFrame.Main.FiredFrame[name].CallCount
-		Count.Text = tostring(tonumber(Count.Text) + 1)
-	else
-		local Template = UI.RemoteSpyFrame.Main.TemplateFrame:Clone()
-		Template.Position = UDim2.new(0, 5, 0, 5 + 30 * #UI.RemoteSpyFrame.Main.FiredFrame:GetChildren())
-		Template.Name, Template.Parent, Template.Visible = name, UI.RemoteSpyFrame.Main.FiredFrame, true
-		Template.ItemName.Text = name
-		Template.TypeImg.Image = icon
-		Template.CallCount.Text = "1"
-	end
-end
-
-loadstring(game:HttpGet("https://raw.githubusercontent.com/SykoticCataclysm/ExoToolV2/master/RemoteSpy.lua"))()
-
-local Frames = {
-	[UI.SelectFrame.RemoteSpyBtn] = UI.RemoteSpyFrame
+local Types = {
+	["FireServer"] = "rbxassetid://4229806545",
+	["InvokeServer"] = "rbxassetid://4229810474",
+	["Fire"] = "rbxassetid://4229809371",
+	["Invoke"] = "rbxassetid://4229807624"
 }
 
-for i, v in pairs(Frames) do
-	i.MouseButton1Click:Connect(function()
-		v.Visible = not v.Visible
-	end)
+local mt = getrawmetatable(game)
+local nc = mt.__namecall
+setreadonly(mt, false)
+
+mt.__namecall = function(obj, ...)
+	local Method = getnamecallmethod()
+	if Types[Method] then
+		Fired[#Fired + 1] = { obj.Name, obj.ClassName, Types[Method], {...} }
+	end
+	return nc(obj, ...)
 end
+
+setreadonly(mt, true)
+
+spawn(function()
+	while wait() do
+		if #Fired > 0 then
+			UpdateRemote(unpack(table.remove(Fired, 1)))
+		end
+	end
+end)
