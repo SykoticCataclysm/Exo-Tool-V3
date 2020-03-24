@@ -2,10 +2,10 @@ local UI = game:GetObjects("rbxassetid://4814616806")[1]
 UI.Parent = game:GetService("CoreGui")
 
 getgenv().UpdateRemote = function(name, classname, icon, args)
-	if not UI.RemoteSpyFrame.FiredFrame[name] then
-		local Template = UI.RemoteSpyFrame.TemplateFrame:Clone()
-		Template.Name, Template.Parent, Template.Visible = name, UI.RemoteSpyFrame.FiredFrame, true
-		Template.Position = UDim2.new(0, 5, 0, 5 + 30 * #UI.RemoteSpyFrame.FiredFrame:GetChildren())
+	if not UI.RemoteSpyFrame.Main.FiredFrame[name] then
+		local Template = UI.RemoteSpyFrame.Main.TemplateFrame:Clone()
+		Template.Name, Template.Parent, Template.Visible = name, UI.RemoteSpyFrame.Main.FiredFrame, true
+		Template.Position = UDim2.new(0, 5, 0, 5 + 30 * #UI.RemoteSpyFrame.Main.FiredFrame:GetChildren())
 		Template.ItemName.Text = name
 		Template.TypeImg.Image = icon
 	else
