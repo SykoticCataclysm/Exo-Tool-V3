@@ -1,3 +1,5 @@
+-- Init Script
+
 local UI = game:GetObjects("rbxassetid://4814616806")[1]
 UI.Parent = game:GetService("CoreGui")
 
