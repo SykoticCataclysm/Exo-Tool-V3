@@ -11,13 +11,13 @@ local mt = getrawmetatable(game)
 local nc = mt.__namecall
 setreadonly(mt, false)
 
-mt.__namecall = function(obj, ...)
+mt.__namecall = newcclosure(function(obj, ...)
 	local Method = getnamecallmethod()
 	if Types[Method] then
 		Fired[#Fired + 1] = { obj.Name, obj.ClassName, Types[Method], {...} }
 	end
 	return nc(obj, ...)
-end
+end)
 
 setreadonly(mt, true)
 
