@@ -40,7 +40,7 @@ if jbEvent ~= nil then
 	local Old = jbEvent.FireServer
 	jbEvent.FireServer = function(inst, ...)
 		local Args = {...}
-		if jbArg == nil then
+		if jbArg == nil or jbArg == Args[1] then
 			jbArg = Args[1]
 			Fired[#Fired + 1] = { "JailBreak Spam Arg", "RemoteEvent", "rbxassetid://4229806545", GetType(Args) }
 		elseif Args[1] ~= jbArg then
