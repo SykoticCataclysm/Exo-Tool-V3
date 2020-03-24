@@ -33,7 +33,6 @@ if game.PlaceId == 606849621 then
 						local Args = {...}
 						if jbArg == nil then
 							jbArg = Args[1]
-						elseif Args[1] == jbArg then
 							Fired[#Fired + 1] = { "JailBreak Spam Arg", "RemoteEvent", "rbxassetid://4229806545", {...} }
 						elseif Args[1] ~= jbArg then
 							Fired[#Fired + 1] = { "JailBreak Bypass", "RemoteEvent", "rbxassetid://4229806545", {...} }
