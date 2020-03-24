@@ -7,10 +7,11 @@ getgenv().UpdateRemote = function(name, classname, icon, args)
 		Count.Text = tostring(tonumber(Count.Text) + 1)
 	else
 		local Template = UI.RemoteSpyFrame.Main.TemplateFrame:Clone()
-		Template.Name, Template.Parent, Template.Visible = name, UI.RemoteSpyFrame.Main.FiredFrame, true
 		Template.Position = UDim2.new(0, 5, 0, 5 + 30 * #UI.RemoteSpyFrame.Main.FiredFrame:GetChildren())
+		Template.Name, Template.Parent, Template.Visible = name, UI.RemoteSpyFrame.Main.FiredFrame, true
 		Template.ItemName.Text = name
 		Template.TypeImg.Image = icon
+		Template.CallCount.Text = "1"
 	end
 end
 
