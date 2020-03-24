@@ -68,10 +68,21 @@ getgenv().UpdateRemote = function(name, classname, icon, args)
 	Frame.Calls.CanvasSize = UDim2.new(0, 0, 0, 10 + 30 * #Frame.Calls:GetChildren())
 end
 
+getgenv().AddHttp = function(link, httpType)
+	local Template = UI.HttpSpyFrame.Main.TemplateFrame:Clone()
+	Template.Position = UDim2.new(0, 5, 0, 5 + 30 * #UI.HttpSpyFrame.Main.SpiedFrame:GetChildren())
+	Template.Parent, Template.Visible = UI.HttpSpyFrame.Main.SpiedFrame, true
+	Template.RequestType.Text = httpType
+	Template.Link.Text = link
+	Template.Copy.MouseButton1Click:Connect(function() setclipboard(link) end)
+end
+
 loadstring(game:HttpGet("https://raw.githubusercontent.com/SykoticCataclysm/ExoToolV2/master/RemoteSpy.lua"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/SykoticCataclysm/ExoToolV2/master/HttpSpy.lua"))()
 
 local Frames = {
-	[UI.SelectFrame.RemoteSpyBtn] = UI.RemoteSpyFrame
+	[UI.SelectFrame.RemoteSpyBtn] = UI.RemoteSpyFrame,
+	[UI.SelectFrame.HttpSpyBtn] = UI.HttpSpyFrame
 }
 
 for i, v in pairs(Frames) do
