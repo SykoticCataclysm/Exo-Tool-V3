@@ -16,7 +16,7 @@ function GetType(Instance)
 			return "Vector3.new(" .. tostring(Instance) .. ")"
 		end,
 		BrickColor = function()
-			return "BrickColor.new(\"" .. tostring(Instance) .. "\")"
+			return "BrickColor.new('" .. tostring(Instance) .. "')"
 		end,
 		Color3 = function()
 			return "Color3.new(" .. tostring(Instance) .. ")"
@@ -33,7 +33,7 @@ function GetType(Instance)
 			for i, v in pairs(Instance) do
 				Str = Str .. "[" .. GetType(i) .. "] = " .. GetType(v) .. ", "
 			end
-			return string.sub(Str, 1, string.len(Str) - 2) .. " }"
+			return Str == "{ " and "None" or string.sub(Str, 1, string.len(Str) - 2) .. " }"
 		end
 	}
 
@@ -62,7 +62,7 @@ getgenv().UpdateRemote = function(name, classname, icon, args)
 	local Template = Frame.TemplateCall:Clone()
 	Template.Position = UDim2.new(0, 5, 0, 5 + 30 * #Frame.Calls:GetChildren())
 	Template.Parent, Template.Visible = Frame.Calls, true
-	Template.ArgsLabel.Text = "Args:" .. GetType(args)
+	Template.ArgsLabel.Text = "Args: " .. GetType(args)
 	Template.Copy.MouseButton1Click:Connect(function() setclipboard(GetType(args)) end)
 end
 
