@@ -3,7 +3,7 @@ UI.Parent = game:GetService("CoreGui")
 
 getgenv().UpdateRemote = function(name, classname, icon, args)
 	if UI.RemoteSpyFrame.Main.FiredFrame:FindFirstChild(name) then
-		local Count = UI.RemoteSpyFrame.FiredFrame[name].CallCount
+		local Count = UI.RemoteSpyFrame.Main.FiredFrame[name].CallCount
 		Count.Text = tostring(tonumber(Count.Text) + 1)
 	else
 		local Template = UI.RemoteSpyFrame.Main.TemplateFrame:Clone()
