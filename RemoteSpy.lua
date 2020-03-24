@@ -21,6 +21,20 @@ end
 
 setreadonly(mt, true)
 
+if game.PlaceId == 606849621 then
+	for a, b in next, getgc() do
+		if type(b) == "function" then
+			for c, d in next, debug.getupvalues(b) do
+				if type(d) == "table" and rawget(d, "FireServer") then
+					hookfunction(d.FireServer, function(self, ...)
+						UpdateRemote("JailBreak Bypass", "RemoteEvent", "rbxassetid://4229806545", {...})
+					end)
+				end
+			end
+		end
+	end
+end
+
 spawn(function()
 	while wait() do
 		if #Fired > 0 then
