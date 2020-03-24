@@ -1,10 +1,10 @@
 local Fired = {}
 
 local Types = {
-	RemoteEvent = { "FireServer", "rbxassetid://4229806545" },
-	RemoteFunction = { "InvokeServer", "rbxassetid://4229810474" },
-	BindableEvent = { "Fire", "rbxassetid://4229809371" },
-	BindableFunction = { "Invoke", "rbxassetid://4229807624" }
+	["FireServer"] = "rbxassetid://4229806545",
+	["InvokeServer"] = "rbxassetid://4229810474",
+	["Fire"] = "rbxassetid://4229809371",
+	["Invoke"] = "rbxassetid://4229807624"
 }
 
 local mt = getrawmetatable(game)
