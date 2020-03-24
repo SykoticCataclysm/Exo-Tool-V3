@@ -22,26 +22,31 @@ end)
 setreadonly(mt, true)
 
 local jbArg = nil
+local jbEvent = nil
 
 if game.PlaceId == 606849621 then
 	for a, b in next, getgc() do
 		if type(b) == "function" then
 			for c, d in next, debug.getupvalues(b) do
 				if type(d) == "table" and rawget(d, "FireServer") then
-					local Old = d.FireServer
-					d.FireServer = function(self, ...)
-						local Args = {...}
-						if jbArg == nil then
-							jbArg = Args[1]
-							Fired[#Fired + 1] = { "JailBreak Spam Arg", "RemoteEvent", "rbxassetid://4229806545", {...} }
-						elseif Args[1] ~= jbArg then
-							Fired[#Fired + 1] = { "JailBreak Bypass", "RemoteEvent", "rbxassetid://4229806545", {...} }
-						end
-						Old(self, ...)
-					end
+					jbEvent = d
 				end
 			end
 		end
+	end
+end
+	
+if jbEvent ~= nil then
+	local Old = jbEvent.FireServer
+	jbEvent.FireServer = function(inst, ...)
+		local Args = {...}
+		if jbArg == nil then
+			jbArg = Args[1]
+			Fired[#Fired + 1] = { "JailBreak Spam Arg", "RemoteEvent", "rbxassetid://4229806545", GetType(Args) }
+		elseif Args[1] ~= jbArg then
+			Fired[#Fired + 1] = { "JailBreak Bypass", "RemoteEvent", "rbxassetid://4229806545", GetType(Args) }
+		end
+		Old(inst, ...)
 	end
 end
 
