@@ -1,0 +1,26 @@
+local Fired = {}
+
+local Types = {
+	RemoteEvent = { "FireServer", "rbxassetid://4229806545" },
+	RemoteFunction = { "InvokeServer", "rbxassetid://4229810474" },
+	BindableEvent = { "Fire", "rbxassetid://4229809371" },
+	BindableFunction = { "Invoke", "rbxassetid://4229807624" }
+}
+
+local mt = getrawmetatable(game)
+local nc = mt.__namecall
+setreadonly(mt, false)
+
+mt.__namecall = function(obj, ...)
+	local Method = getnamecallmethod()
+	if Types[Method] then
+		Fired[#Fired + 1] = { obj.Name, obj.ClassName, Types[Method][2], {...} }
+	end
+	return nc(obj, ...)
+end
+
+while wait() do
+	if #Fired > 0 then
+		UpdateRemote(unpack(table.remove(Fired, 1)))
+	end
+end
