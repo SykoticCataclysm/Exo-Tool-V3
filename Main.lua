@@ -51,6 +51,7 @@ getgenv().UpdateRemote = function(name, classname, icon, args)
 		Template.ItemName.Text = name
 		Template.TypeImg.Image = icon
 		Template.CallCount.Text = "1"
+		Template.CallsFrame.Title.Text = name
 		UI.RemoteSpyFrame.Main.FiredFrame.CanvasSize = UDim2.new(0, 0, 0, 10 + 30 * #UI.RemoteSpyFrame.Main.FiredFrame:GetChildren())
 		Template.InputBegan:Connect(function(input)
 			if input.UserInputType == Enum.UserInputType.MouseButton1 then
