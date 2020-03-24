@@ -1,5 +1,3 @@
--- Init Script
-
 local UI = game:GetObjects("rbxassetid://4814616806")[1]
 UI.Parent = game:GetService("CoreGui")
 
@@ -14,6 +12,7 @@ getgenv().UpdateRemote = function(name, classname, icon, args)
 		Template.ItemName.Text = name
 		Template.TypeImg.Image = icon
 		Template.CallCount.Text = "1"
+		UI.RemoteSpyFrame.Main.FiredFrame.CanvasSize = UDim2.new(0, 0, 0, 10 + 30 * #UI.RemoteSpyFrame.Main.FiredFrame:GetChildren())
 	end
 end
 
