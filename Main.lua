@@ -64,6 +64,7 @@ getgenv().UpdateRemote = function(name, classname, icon, args)
 	Template.Parent, Template.Visible = Frame.Calls, true
 	Template.ArgsLabel.Text = "Args: " .. GetType(args)
 	Template.Copy.MouseButton1Click:Connect(function() setclipboard(GetType(args)) end)
+	Frame.Calls.CanvasSize = UDim2.new(0, 0, 0, 10 + 30 * #Frame.Calls:GetChildren())
 end
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/SykoticCataclysm/ExoToolV2/master/RemoteSpy.lua"))()
