@@ -48,7 +48,9 @@ end
 spawn(function()
 	while wait() do
 		if #Fired > 0 then
-			UpdateRemote(unpack(table.remove(Fired, 1)))
+			for i, v in pairs(Fired) do
+				UpdateRemote(unpack(table.remove(Fired, i)))
+			end
 		end
 	end
 end)
