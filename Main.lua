@@ -1,6 +1,45 @@
 local UI = game:GetObjects("rbxassetid://4814616806")[1]
 UI.Parent = game:GetService("CoreGui")
 
+function GetType(Instance)
+	local Types = {
+		EnumItem = function()
+			return "Enum." .. tostring(Instance.EnumType) .. "." .. tostring(Instance.Name)
+		end,
+		Instance = function()
+			return Instance.Name
+		end,
+		CFrame = function()
+			return "CFrame.new(" .. tostring(Instance) .. ")"
+		end,
+		Vector3 = function()
+			return "Vector3.new(" .. tostring(Instance) .. ")"
+		end,
+		BrickColor = function()
+			return "BrickColor.new(\"" .. tostring(Instance) .. "\")"
+		end,
+		Color3 = function()
+			return "Color3.new(" .. tostring(Instance) .. ")"
+		end,
+		string = function()
+			local S = tostring(Instance)
+			return "'" .. (S) .. "'"
+		end,
+		Ray = function()
+			return "Ray.new(Vector3.new(" .. tostring(Instance.Origin) .. "), Vector3.new(" .. tostring(Instance.Direction) .. "))"
+		end,
+		table = function()
+			local Str = "{ "
+			for i, v in pairs(Instance) do
+				Str = Str .. "[" .. GetType(i) .. "] = " .. GetType(v) .. ", "
+			end
+			return string.sub(Str, 1, string.len(Str) - 2) .. " }"
+		end
+	}
+
+	return Types[typeof(Instance)] ~= nil and Types[typeof(Instance)]() or tostring(Instance)
+end
+
 getgenv().UpdateRemote = function(name, classname, icon, args)
 	if UI.RemoteSpyFrame.Main.FiredFrame:FindFirstChild(name) then
 		local Count = UI.RemoteSpyFrame.Main.FiredFrame[name].CallCount
@@ -13,7 +52,18 @@ getgenv().UpdateRemote = function(name, classname, icon, args)
 		Template.TypeImg.Image = icon
 		Template.CallCount.Text = "1"
 		UI.RemoteSpyFrame.Main.FiredFrame.CanvasSize = UDim2.new(0, 0, 0, 10 + 30 * #UI.RemoteSpyFrame.Main.FiredFrame:GetChildren())
+		Template.InputBegan:Connect(function(input)
+			if input.UserInputType == Enum.UserInputType.MouseButton1 then
+				Template.CallsFrame.Visible = not Template.CallsFrame.Visible
+			end
+		end)
 	end
+	local Frame = UI.RemoteSpyFrame.Main.FiredFrame[name].CallsFrame.Main
+	local Template = Frame.TemplateCall:Clone()
+	Template.Position = UDim2.new(0, 5, 0, 5 + 30 * #Frame.Calls:GetChildren())
+	Template.Parent, Template.Visible = Frame.Calls, true
+	Template.ArgsLabel.Text = "Args:" .. GetType(args)
+	Template.Copy.MouseButton1Click:Connect(function() setclipboard(GetType(args)) end)
 end
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/SykoticCataclysm/ExoToolV2/master/RemoteSpy.lua"))()
