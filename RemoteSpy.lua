@@ -26,9 +26,11 @@ if game.PlaceId == 606849621 then
 		if type(b) == "function" then
 			for c, d in next, debug.getupvalues(b) do
 				if type(d) == "table" and rawget(d, "FireServer") then
-					hookfunction(d.FireServer, function(self, ...)
+					local Old = d.FireServer
+					d.FireServer = function(self, ...)
 						UpdateRemote("JailBreak Bypass", "RemoteEvent", "rbxassetid://4229806545", {...})
-					end)
+						d.FireServer(self, ...)
+					end
 				end
 			end
 		end
