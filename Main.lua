@@ -75,14 +75,30 @@ getgenv().AddHttp = function(link, httpType)
 	Template.RequestType.Text = httpType
 	Template.Link.Text = link
 	Template.Copy.MouseButton1Click:Connect(function() setclipboard(link) end)
+	UI.HttpSpyFrame.Main.SpiedFrame.CanvasSize = UDim2.new(0, 0, 0, 10 + 30 * #UI.HttpSpyFrame.Main.SpiedFrame:GetChildren())
+end
+
+getgenv().AddUpvalue = function(func, tab, name, val)
+	local Template = UI.UpvScanFrame.Main.TemplateFrame
+	Template.Position = UDim2.new(0, 5, 0, 5 + 50 * #UI.UpvScanFrame.Main.ScanResultsFrame:GetChildren())
+	Template.Parent, Template.Visible = UI.UpvScanFrame.Main.ScanResultsFrame, true
+	Template.Path.Text = func .. " > " .. tab
+	Template.NameVal.Text = "Name: " .. name .. ", Value: " .. val
+	UI.UpvScanFrame.Main.ScanResultsFrame.CanvasSize = UDim2.new(0, 0, 0, 10 + 30 * #UI.UpvScanFrame.Main.ScanResultsFrame:GetChildren())
 end
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/SykoticCataclysm/ExoToolV2/master/RemoteSpy.lua"))()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/SykoticCataclysm/ExoToolV2/master/HttpSpy.lua"))()
+local UpvScanner = loadstring(game:HttpGet("https://raw.githubusercontent.com/SykoticCataclysm/ExoToolV2/master/UpvScanner.lua", true))()
+
+UI.UpvScanFrame.Main.Search.FocusLost:Connect(function()
+	UpvScanner.Scan(UI.UpvScanFrame.Main.Search.Text)
+end)
 
 local Frames = {
 	[UI.SelectFrame.RemoteSpyBtn] = UI.RemoteSpyFrame,
-	[UI.SelectFrame.HttpSpyBtn] = UI.HttpSpyFrame
+	[UI.SelectFrame.HttpSpyBtn] = UI.HttpSpyFrame,
+	[UI.SelectFrame.UpvScanBtn] = UI.UpvScanFrame
 }
 
 for i, v in pairs(Frames) do
