@@ -1,7 +1,7 @@
 local UI = game:GetObjects("rbxassetid://4814616806")[1]
 UI.Parent = game:GetService("CoreGui")
 
-function Format(str)
+getgenv().Format = function(str)
 	if str == '' or str:match("[^_%w]") or str:match("^%d") then
 		return '["' .. str .. '"]'
 	end
