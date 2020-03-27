@@ -36,8 +36,12 @@ getgenv().GetType = function(Instance)
 			return Str == "{ " and "None" or string.sub(Str, 1, string.len(Str) - 2) .. " }"
 		end
 	}
-
-	return Types[typeof(Instance)] ~= nil and Types[typeof(Instance)]() or tostring(Instance)
+	
+	if Types[typeof(Instance)] then
+		return Types[typeof(Instance)]()
+	else
+		return tostring(Instance)
+	end
 end
 
 getgenv().UpdateRemote = function(name, classname, icon, args)
