@@ -1,13 +1,36 @@
 local UI = game:GetObjects("rbxassetid://4814616806")[1]
 UI.Parent = game:GetService("CoreGui")
 
+function Format(str)
+	if str == '' or str:match("[^_%w]") or str:match("^%d") then
+		return '["' .. str .. '"]'
+	end
+	return "." .. str	
+end
+
+getgenv().GetPath = function(Instance)
+	if Instance == game then return "game" end
+	if Instance == workspace then return "workspace" end
+	local current, str = Instance, ""
+	while Instance.Parent ~= game do
+		str = Format(current.Name) .. str
+		current = current.Parent
+	end
+	if current == workspace then
+		return "workspace" .. str
+	elseif pcall(game.GetService, game, current.ClassName) then
+		return "game:GetService('" .. current.ClassName .. "')" .. str
+	end
+	return game .. Format(current.Name) .. str
+end
+
 getgenv().GetType = function(Instance)
 	local Types = {
 		EnumItem = function()
 			return "Enum." .. tostring(Instance.EnumType) .. "." .. tostring(Instance.Name)
 		end,
 		Instance = function()
-			return Instance.Name
+			return GetPath(Instance)
 		end,
 		CFrame = function()
 			return "CFrame.new(" .. tostring(Instance) .. ")"
@@ -25,9 +48,6 @@ getgenv().GetType = function(Instance)
 			local S = tostring(Instance)
 			return "'" .. (S) .. "'"
 		end,
-		number = function()
-			return Instance
-		end,
 		Ray = function()
 			return "Ray.new(Vector3.new(" .. tostring(Instance.Origin) .. "), Vector3.new(" .. tostring(Instance.Direction) .. "))"
 		end,
@@ -36,7 +56,7 @@ getgenv().GetType = function(Instance)
 			for i, v in pairs(Instance) do
 				Str = Str .. "[" .. GetType(i) .. "] = " .. GetType(v) .. ", "
 			end
-			return Str == "{ " and "None" or string.sub(Str, 1, string.len(Str) - 2) .. " }"
+			return Str == "{ " and "{}" or string.sub(Str, 1, string.len(Str) - 2) .. " }"
 		end
 	}
 	
