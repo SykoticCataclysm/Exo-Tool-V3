@@ -25,6 +25,9 @@ getgenv().GetType = function(Instance)
 			local S = tostring(Instance)
 			return "'" .. (S) .. "'"
 		end,
+		number = function()
+			return Instance
+		end,
 		Ray = function()
 			return "Ray.new(Vector3.new(" .. tostring(Instance.Origin) .. "), Vector3.new(" .. tostring(Instance.Direction) .. "))"
 		end,
