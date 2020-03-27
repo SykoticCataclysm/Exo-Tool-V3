@@ -84,7 +84,7 @@ getgenv().AddUpvalue = function(func, tab, name, val)
 	Template.Parent, Template.Visible = UI.UpvScanFrame.Main.ScanResultsFrame, true
 	Template.Path.Text = tostring(func) .. " > " .. tostring(tab)
 	Template.NameVal.Text = "Name: " .. name .. ", Value: " .. val
-	UI.UpvScanFrame.Main.ScanResultsFrame.CanvasSize = UDim2.new(0, 0, 0, 10 + 30 * #UI.UpvScanFrame.Main.ScanResultsFrame:GetChildren())
+	UI.UpvScanFrame.Main.ScanResultsFrame.CanvasSize = UDim2.new(0, 0, 0, 10 + 50 * #UI.UpvScanFrame.Main.ScanResultsFrame:GetChildren())
 end
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/SykoticCataclysm/ExoToolV2/master/RemoteSpy.lua"))()
