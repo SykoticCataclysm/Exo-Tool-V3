@@ -39,7 +39,7 @@ getgenv().GetType = function(Instance)
 	return Types[typeof(Instance)] ~= nil and Types[typeof(Instance)]() or tostring(Instance)
 end
 
-getgenv().UpdateRemote = function(name, classname, icon, args)
+getgenv().UpdateRemote = function(name, classname, icon, args, returnArgs)
 	if UI.RemoteSpyFrame.Main.FiredFrame:FindFirstChild(name) then
 		local Count = UI.RemoteSpyFrame.Main.FiredFrame[name].CallCount
 		Count.Text = tostring(tonumber(Count.Text) + 1)
@@ -63,6 +63,9 @@ getgenv().UpdateRemote = function(name, classname, icon, args)
 	Template.Position = UDim2.new(0, 5, 0, 5 + 30 * #Frame.Calls:GetChildren())
 	Template.Parent, Template.Visible = Frame.Calls, true
 	Template.ArgsLabel.Text = "Args: " .. GetType(args)
+	if string.find(classname, "Function") then
+		Template.ArgsLabel.Text = Template.ArgsLabel.Text .. ", Return: " .. GetType(returnArgs)
+	end
 	Template.Copy.MouseButton1Click:Connect(function() setclipboard(GetType(args)) end)
 	Frame.Calls.CanvasSize = UDim2.new(0, 0, 0, 10 + 30 * #Frame.Calls:GetChildren())
 end
