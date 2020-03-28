@@ -91,6 +91,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/SykoticCataclysm/ExoT
 loadstring(game:HttpGet("https://raw.githubusercontent.com/SykoticCataclysm/ExoToolV2/master/UpvScanner.lua"))()
 
 UI.UpvScanFrame.Main.Search.FocusLost:Connect(function()
+	UI.UpvScanFrame.Main.ScanResultsFrame:ClearAllChildren()
 	Scan(UI.UpvScanFrame.Main.Search.Text)
 end)
 
