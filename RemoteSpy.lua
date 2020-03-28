@@ -13,13 +13,12 @@ setreadonly(mt, false)
 
 mt.__namecall = newcclosure(function(obj, ...)
 	local Method = getnamecallmethod()
-	local Return = nil
 	if Types[Method] then
-		Return = {nc(obj, ...)}
+		local Return = {nc(obj, ...)}
 		Fired[#Fired + 1] = { obj.Name, obj.ClassName, Types[Method], {...}, Return }
+		return unpack(Return)
 	end
-	if Return ~= nil then return unpack(Return) end
-	return nil
+	return nc(obj, ...)
 end)
 
 setreadonly(mt, true)
