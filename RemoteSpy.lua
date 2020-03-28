@@ -13,10 +13,12 @@ setreadonly(mt, false)
 
 mt.__namecall = newcclosure(function(obj, ...)
 	local Method = getnamecallmethod()
+	local Return
 	if Types[Method] then
-		Fired[#Fired + 1] = { obj.Name, obj.ClassName, Types[Method], {...} }
+		Return = {nc(obj, ...)}
+		Fired[#Fired + 1] = { obj.Name, obj.ClassName, Types[Method], {...}, Return }
 	end
-	return nc(obj, ...)
+	return unpack(Return)
 end)
 
 setreadonly(mt, true)
