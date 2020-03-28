@@ -48,8 +48,7 @@ local Search = Instance.new("TextBox")
 --Properties:
 
 ExoToolV2.Name = "ExoToolV2"
-ExoToolV2.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-ExoToolV2.Enabled = false
+ExoToolV2.Parent = game:GetService("CoreGui")
 
 SelectFrame.Name = "SelectFrame"
 SelectFrame.Parent = ExoToolV2
