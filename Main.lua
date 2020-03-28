@@ -88,10 +88,10 @@ end
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/SykoticCataclysm/ExoToolV2/master/RemoteSpy.lua"))()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/SykoticCataclysm/ExoToolV2/master/HttpSpy.lua"))()
-local UpvScanner = loadstring(game:HttpGet("https://raw.githubusercontent.com/SykoticCataclysm/ExoToolV2/master/UpvScanner.lua", true))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/SykoticCataclysm/ExoToolV2/master/UpvScanner.lua"))()
 
 UI.UpvScanFrame.Main.Search.FocusLost:Connect(function()
-	UpvScanner.Scan(UI.UpvScanFrame.Main.Search.Text)
+	Scan(UI.UpvScanFrame.Main.Search.Text)
 end)
 
 local Frames = {
