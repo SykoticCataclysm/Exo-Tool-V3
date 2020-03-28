@@ -63,6 +63,7 @@ SelectFrame.Image = "rbxassetid://3570695787"
 SelectFrame.ImageColor3 = Color3.new(0.156863, 0.156863, 0.156863)
 SelectFrame.ScaleType = Enum.ScaleType.Slice
 SelectFrame.SliceCenter = Rect.new(100, 100, 100, 100)
+SelectFrame.SliceScale = 0.05
 
 Outline.Name = "Outline"
 Outline.Parent = SelectFrame
@@ -77,6 +78,7 @@ Outline.Image = "rbxassetid://3570695787"
 Outline.ImageColor3 = Color3.new(0.215686, 1, 1)
 Outline.ScaleType = Enum.ScaleType.Slice
 Outline.SliceCenter = Rect.new(100, 100, 100, 100)
+Outline.SliceScale = 0.05
 
 RemoteSpyBtn.Name = "RemoteSpyBtn"
 RemoteSpyBtn.Parent = SelectFrame
@@ -119,6 +121,7 @@ RemoteSpyFrame.Image = "rbxassetid://3570695787"
 RemoteSpyFrame.ImageColor3 = Color3.new(0.156863, 0.156863, 0.156863)
 RemoteSpyFrame.ScaleType = Enum.ScaleType.Slice
 RemoteSpyFrame.SliceCenter = Rect.new(100, 100, 100, 100)
+RemoteSpyFrame.SliceScale = 0.05
 
 Outline_2.Name = "Outline"
 Outline_2.Parent = RemoteSpyFrame
@@ -133,6 +136,7 @@ Outline_2.Image = "rbxassetid://3570695787"
 Outline_2.ImageColor3 = Color3.new(0.215686, 1, 1)
 Outline_2.ScaleType = Enum.ScaleType.Slice
 Outline_2.SliceCenter = Rect.new(100, 100, 100, 100)
+Outline_2.SliceScale = 0.05
 
 Title.Name = "Title"
 Title.Parent = RemoteSpyFrame
@@ -158,6 +162,7 @@ Main.Image = "rbxassetid://3570695787"
 Main.ImageColor3 = Color3.new(0.196078, 0.196078, 0.196078)
 Main.ScaleType = Enum.ScaleType.Slice
 Main.SliceCenter = Rect.new(100, 100, 100, 100)
+Main.SliceScale = 0.05
 
 FiredFrame.Name = "FiredFrame"
 FiredFrame.Parent = Main
@@ -226,6 +231,7 @@ CallsFrame.Image = "rbxassetid://3570695787"
 CallsFrame.ImageColor3 = Color3.new(0.156863, 0.156863, 0.156863)
 CallsFrame.ScaleType = Enum.ScaleType.Slice
 CallsFrame.SliceCenter = Rect.new(100, 100, 100, 100)
+CallsFrame.SliceScale = 0.05
 
 Outline_3.Name = "Outline"
 Outline_3.Parent = CallsFrame
@@ -241,6 +247,7 @@ Outline_3.Image = "rbxassetid://3570695787"
 Outline_3.ImageColor3 = Color3.new(0.215686, 1, 1)
 Outline_3.ScaleType = Enum.ScaleType.Slice
 Outline_3.SliceCenter = Rect.new(100, 100, 100, 100)
+Outline_3.SliceScale = 0.05
 
 Title_2.Name = "Title"
 Title_2.Parent = CallsFrame
@@ -266,6 +273,7 @@ Main_2.Image = "rbxassetid://3570695787"
 Main_2.ImageColor3 = Color3.new(0.196078, 0.196078, 0.196078)
 Main_2.ScaleType = Enum.ScaleType.Slice
 Main_2.SliceCenter = Rect.new(100, 100, 100, 100)
+Main_2.SliceScale = 0.05
 
 Calls.Name = "Calls"
 Calls.Parent = Main_2
@@ -326,6 +334,7 @@ HttpSpyFrame.Image = "rbxassetid://3570695787"
 HttpSpyFrame.ImageColor3 = Color3.new(0.156863, 0.156863, 0.156863)
 HttpSpyFrame.ScaleType = Enum.ScaleType.Slice
 HttpSpyFrame.SliceCenter = Rect.new(100, 100, 100, 100)
+HttpSpyFrame.SliceScale = 0.05
 
 Outline_4.Name = "Outline"
 Outline_4.Parent = HttpSpyFrame
@@ -340,6 +349,7 @@ Outline_4.Image = "rbxassetid://3570695787"
 Outline_4.ImageColor3 = Color3.new(0.215686, 1, 1)
 Outline_4.ScaleType = Enum.ScaleType.Slice
 Outline_4.SliceCenter = Rect.new(100, 100, 100, 100)
+Outline_4.SliceScale = 0.05
 
 Title_3.Name = "Title"
 Title_3.Parent = HttpSpyFrame
@@ -365,6 +375,7 @@ Main_3.Image = "rbxassetid://3570695787"
 Main_3.ImageColor3 = Color3.new(0.196078, 0.196078, 0.196078)
 Main_3.ScaleType = Enum.ScaleType.Slice
 Main_3.SliceCenter = Rect.new(100, 100, 100, 100)
+Main_3.SliceScale = 0.05
 
 SpiedFrame.Name = "SpiedFrame"
 SpiedFrame.Parent = Main_3
@@ -438,6 +449,7 @@ UpvScanFrame.Image = "rbxassetid://3570695787"
 UpvScanFrame.ImageColor3 = Color3.new(0.156863, 0.156863, 0.156863)
 UpvScanFrame.ScaleType = Enum.ScaleType.Slice
 UpvScanFrame.SliceCenter = Rect.new(100, 100, 100, 100)
+UpvScanFrame.SliceScale = 0.05
 
 Outline_5.Name = "Outline"
 Outline_5.Parent = UpvScanFrame
@@ -452,6 +464,7 @@ Outline_5.Image = "rbxassetid://3570695787"
 Outline_5.ImageColor3 = Color3.new(0.215686, 1, 1)
 Outline_5.ScaleType = Enum.ScaleType.Slice
 Outline_5.SliceCenter = Rect.new(100, 100, 100, 100)
+Outline_5.SliceScale = 0.05
 
 Title_4.Name = "Title"
 Title_4.Parent = UpvScanFrame
@@ -477,6 +490,7 @@ Main_4.Image = "rbxassetid://3570695787"
 Main_4.ImageColor3 = Color3.new(0.196078, 0.196078, 0.196078)
 Main_4.ScaleType = Enum.ScaleType.Slice
 Main_4.SliceCenter = Rect.new(100, 100, 100, 100)
+Main_4.SliceScale = 0.05
 
 ScanResultsFrame.Name = "ScanResultsFrame"
 ScanResultsFrame.Parent = Main_4
