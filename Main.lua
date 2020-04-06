@@ -1,4 +1,6 @@
-local UI = loadstring(game:HttpGet("https://raw.githubusercontent.com/SykoticCataclysm/ExoToolV2/master/Gui.lua"))()
+local UI = game:GetObjects("rbxassetid://4814616806")[1]
+UI.Enabled = true
+UI.Parent = game:GetService("CoreGui")
 
 getgenv().GetType = function(Instance)
 	local Types = {
