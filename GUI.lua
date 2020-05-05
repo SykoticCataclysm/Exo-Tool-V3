@@ -25,23 +25,8 @@ local ScriptDumperSettings = {
 -- Instances:
 
 local ExoToolV3 = Instance.new("ScreenGui")
-local Selection = Instance.new("Frame")
-local UIGradient = Instance.new("UIGradient")
-local BorderLine = Instance.new("TextLabel")
-local Title = Instance.new("TextLabel")
-local Discord = Instance.new("TextLabel")
-local Icons = Instance.new("Frame")
-local RemoteSpyIcon = Instance.new("ImageLabel")
-local UpvalueScannerIcon = Instance.new("ImageLabel")
-local ScriptDumperIcon = Instance.new("ImageLabel")
-local PositionGrabberIcon = Instance.new("ImageLabel")
-local Buttons = Instance.new("Frame")
-local UpvalueScannerBtn = Instance.new("TextButton")
-local ScriptDumperBtn = Instance.new("TextButton")
-local PositionGrabberBtn = Instance.new("TextButton")
-local RemoteSpyBtn = Instance.new("TextButton")
 local ScriptDumper = Instance.new("Frame")
-local Title_2 = Instance.new("TextLabel")
+local Title = Instance.new("TextLabel")
 local Dump = Instance.new("TextButton")
 local BorderTop = Instance.new("TextLabel")
 local BorderRight = Instance.new("TextLabel")
@@ -65,148 +50,25 @@ local BorderRight_2 = Instance.new("TextLabel")
 local BorderTop_2 = Instance.new("TextLabel")
 local BorderLeft_2 = Instance.new("TextLabel")
 local FolderName = Instance.new("TextBox")
+local Selection = Instance.new("ImageLabel")
+local Buttons = Instance.new("Frame")
+local UpvalueScannerBtn = Instance.new("TextButton")
+local ScriptDumperBtn = Instance.new("TextButton")
+local PositionGrabberBtn = Instance.new("TextButton")
+local RemoteSpyBtn = Instance.new("TextButton")
+local Icons = Instance.new("Frame")
+local RemoteSpyIcon = Instance.new("ImageLabel")
+local UpvalueScannerIcon = Instance.new("ImageLabel")
+local ScriptDumperIcon = Instance.new("ImageLabel")
+local PositionGrabberIcon = Instance.new("ImageLabel")
+local BorderLine = Instance.new("TextLabel")
+local Discord = Instance.new("TextLabel")
+local Title_2 = Instance.new("TextLabel")
 
 -- Properties:
 
 ExoToolV3.Name = "ExoToolV3"
 ExoToolV3.Parent = game:GetService("CoreGui")
-
-Selection.Name = "Selection"
-Selection.Parent = ExoToolV3
-Selection.BackgroundColor3 = Color3.new(1, 1, 1)
-Selection.BorderColor3 = Color3.new(0.0784314, 0.0784314, 0.0784314)
-Selection.BorderSizePixel = 0
-Selection.Size = UDim2.new(0, 200, 1, 0)
-
-UIGradient.Name = "UIGradient"
-UIGradient.Parent = Selection
-UIGradient.Color = ColorSequence.new(Color3.fromRGB(20, 20, 20))
-UIGradient.Enabled = true
-UIGradient.Rotation = 0
-UIGradient.Offset = Vector2.new(0, 0)
-UIGradient.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0, 0.9), NumberSequenceKeypoint.new(1, 0.5)})
-
-BorderLine.Name = "BorderLine"
-BorderLine.Parent = Selection
-BorderLine.BackgroundColor3 = Color3.new(0.0784314, 0.0784314, 0.0784314)
-BorderLine.BorderColor3 = Color3.new(0.105882, 0.164706, 0.207843)
-BorderLine.BorderSizePixel = 0
-BorderLine.Position = UDim2.new(1, 0, 0, 0)
-BorderLine.Size = UDim2.new(0, 1, 1, 0)
-BorderLine.Font = Enum.Font.SourceSans
-BorderLine.Text = ""
-BorderLine.TextColor3 = Color3.new(0, 0, 0)
-BorderLine.TextSize = 14
-
-Title.Name = "Title"
-Title.Parent = Selection
-Title.BackgroundColor3 = Color3.new(1, 1, 1)
-Title.BackgroundTransparency = 1
-Title.Size = UDim2.new(1, 0, 0, 50)
-Title.Font = Enum.Font.SourceSansBold
-Title.Text = "Exo Tool V3"
-Title.TextColor3 = Color3.new(1, 1, 1)
-Title.TextSize = 24
-
-Discord.Name = "Discord"
-Discord.Parent = Selection
-Discord.BackgroundColor3 = Color3.new(1, 1, 1)
-Discord.BackgroundTransparency = 1
-Discord.Position = UDim2.new(0, 0, 1, -40)
-Discord.Size = UDim2.new(1, 0, 0, 40)
-Discord.Font = Enum.Font.SourceSansSemibold
-Discord.Text = "discord.me/sykoscripting"
-Discord.TextColor3 = Color3.new(1, 1, 1)
-Discord.TextSize = 18
-
-Icons.Name = "Icons"
-Icons.Parent = Selection
-Icons.BackgroundColor3 = Color3.new(1, 1, 1)
-Icons.BackgroundTransparency = 1
-Icons.Position = UDim2.new(0, 5, 0, 50)
-Icons.Size = UDim2.new(0, 40, 1, -90)
-
-RemoteSpyIcon.Name = "RemoteSpyIcon"
-RemoteSpyIcon.Parent = Icons
-RemoteSpyIcon.BackgroundColor3 = Color3.new(1, 1, 1)
-RemoteSpyIcon.BackgroundTransparency = 1
-RemoteSpyIcon.Size = UDim2.new(0, 40, 0, 40)
-RemoteSpyIcon.Image = "rbxassetid://4988303809"
-
-UpvalueScannerIcon.Name = "UpvalueScannerIcon"
-UpvalueScannerIcon.Parent = Icons
-UpvalueScannerIcon.BackgroundColor3 = Color3.new(1, 1, 1)
-UpvalueScannerIcon.BackgroundTransparency = 1
-UpvalueScannerIcon.Position = UDim2.new(0, 0, 0, 45)
-UpvalueScannerIcon.Size = UDim2.new(0, 40, 0, 40)
-UpvalueScannerIcon.Image = "rbxassetid://4988280805"
-
-ScriptDumperIcon.Name = "ScriptDumperIcon"
-ScriptDumperIcon.Parent = Icons
-ScriptDumperIcon.BackgroundColor3 = Color3.new(1, 1, 1)
-ScriptDumperIcon.BackgroundTransparency = 1
-ScriptDumperIcon.Position = UDim2.new(0, 0, 0, 90)
-ScriptDumperIcon.Size = UDim2.new(0, 40, 0, 40)
-ScriptDumperIcon.Image = "rbxassetid://4988251975"
-ScriptDumperIcon.ImageColor3 = Color3.new(0, 0, 0)
-
-PositionGrabberIcon.Name = "PositionGrabberIcon"
-PositionGrabberIcon.Parent = Icons
-PositionGrabberIcon.BackgroundColor3 = Color3.new(1, 1, 1)
-PositionGrabberIcon.BackgroundTransparency = 1
-PositionGrabberIcon.Position = UDim2.new(0, 0, 0, 135)
-PositionGrabberIcon.Size = UDim2.new(0, 40, 0, 40)
-PositionGrabberIcon.Image = "rbxassetid://4988252064"
-
-Buttons.Name = "Buttons"
-Buttons.Parent = Selection
-Buttons.BackgroundColor3 = Color3.new(1, 1, 1)
-Buttons.BackgroundTransparency = 1
-Buttons.Position = UDim2.new(0, 50, 0, 50)
-Buttons.Size = UDim2.new(0, 145, 1, -90)
-
-UpvalueScannerBtn.Name = "UpvalueScannerBtn"
-UpvalueScannerBtn.Parent = Buttons
-UpvalueScannerBtn.BackgroundColor3 = Color3.new(1, 1, 1)
-UpvalueScannerBtn.BackgroundTransparency = 1
-UpvalueScannerBtn.Position = UDim2.new(0, 0, 0, 45)
-UpvalueScannerBtn.Size = UDim2.new(1, 0, 0, 40)
-UpvalueScannerBtn.Font = Enum.Font.SourceSans
-UpvalueScannerBtn.Text = "Upvalue Scanner"
-UpvalueScannerBtn.TextColor3 = Color3.new(1, 1, 1)
-UpvalueScannerBtn.TextSize = 16
-
-ScriptDumperBtn.Name = "ScriptDumperBtn"
-ScriptDumperBtn.Parent = Buttons
-ScriptDumperBtn.BackgroundColor3 = Color3.new(1, 1, 1)
-ScriptDumperBtn.BackgroundTransparency = 1
-ScriptDumperBtn.Position = UDim2.new(0, 0, 0, 90)
-ScriptDumperBtn.Size = UDim2.new(1, 0, 0, 40)
-ScriptDumperBtn.Font = Enum.Font.SourceSans
-ScriptDumperBtn.Text = "Script Dumper"
-ScriptDumperBtn.TextColor3 = Color3.new(1, 1, 1)
-ScriptDumperBtn.TextSize = 16
-
-PositionGrabberBtn.Name = "PositionGrabberBtn"
-PositionGrabberBtn.Parent = Buttons
-PositionGrabberBtn.BackgroundColor3 = Color3.new(1, 1, 1)
-PositionGrabberBtn.BackgroundTransparency = 1
-PositionGrabberBtn.Position = UDim2.new(0, 0, 0, 135)
-PositionGrabberBtn.Size = UDim2.new(1, 0, 0, 40)
-PositionGrabberBtn.Font = Enum.Font.SourceSans
-PositionGrabberBtn.Text = "Position Grabber"
-PositionGrabberBtn.TextColor3 = Color3.new(1, 1, 1)
-PositionGrabberBtn.TextSize = 16
-
-RemoteSpyBtn.Name = "RemoteSpyBtn"
-RemoteSpyBtn.Parent = Buttons
-RemoteSpyBtn.BackgroundColor3 = Color3.new(1, 1, 1)
-RemoteSpyBtn.BackgroundTransparency = 1
-RemoteSpyBtn.Size = UDim2.new(1, 0, 0, 40)
-RemoteSpyBtn.Font = Enum.Font.SourceSans
-RemoteSpyBtn.Text = "Remote Spy"
-RemoteSpyBtn.TextColor3 = Color3.new(1, 1, 1)
-RemoteSpyBtn.TextSize = 16
 
 ScriptDumper.Name = "ScriptDumper"
 ScriptDumper.Parent = ExoToolV3
@@ -216,17 +78,16 @@ ScriptDumper.BorderColor3 = Color3.new(0, 0, 0)
 ScriptDumper.BorderSizePixel = 0
 ScriptDumper.Position = UDim2.new(0, 220, 0, 140)
 ScriptDumper.Size = UDim2.new(0, 200, 0, 280)
-ScriptDumper.Visible = false
 
-Title_2.Name = "Title"
-Title_2.Parent = ScriptDumper
-Title_2.BackgroundColor3 = Color3.new(1, 1, 1)
-Title_2.BackgroundTransparency = 1
-Title_2.Size = UDim2.new(1, 0, 0, 35)
-Title_2.Font = Enum.Font.SourceSansSemibold
-Title_2.Text = "Script Dumper"
-Title_2.TextColor3 = Color3.new(1, 1, 1)
-Title_2.TextSize = 20
+Title.Name = "Title"
+Title.Parent = ScriptDumper
+Title.BackgroundColor3 = Color3.new(1, 1, 1)
+Title.BackgroundTransparency = 1
+Title.Size = UDim2.new(1, 0, 0, 35)
+Title.Font = Enum.Font.SourceSansSemibold
+Title.Text = "Script Dumper"
+Title.TextColor3 = Color3.new(1, 1, 1)
+Title.TextSize = 20
 
 Dump.Name = "Dump"
 Dump.Parent = ScriptDumper
@@ -488,7 +349,7 @@ BorderLeft_2.TextSize = 14
 FolderName.Name = "FolderName"
 FolderName.Parent = ScriptDumper
 FolderName.BackgroundColor3 = Color3.new(0, 0, 0)
-FolderName.BackgroundTransparency = 0.6
+FolderName.BackgroundTransparency = 0.60000002384186
 FolderName.BorderColor3 = Color3.new(0, 0, 0)
 FolderName.Position = UDim2.new(0, 5, 1, -63)
 FolderName.Size = UDim2.new(1, -10, 0, 25)
@@ -498,7 +359,136 @@ FolderName.PlaceholderText = "[ Folder Name ]"
 FolderName.Text = ""
 FolderName.TextColor3 = Color3.new(1, 1, 1)
 FolderName.TextSize = 16
-FolderName.TextStrokeTransparency = 0.6
+FolderName.TextStrokeTransparency = 0.60000002384186
+
+Selection.Name = "Selection"
+Selection.Parent = ExoToolV3
+Selection.BackgroundColor3 = Color3.new(1, 1, 1)
+Selection.BackgroundTransparency = 1
+Selection.Size = UDim2.new(0, 200, 1, 0)
+Selection.Image = "rbxassetid://4989436076"
+
+Buttons.Name = "Buttons"
+Buttons.Parent = Selection
+Buttons.BackgroundColor3 = Color3.new(1, 1, 1)
+Buttons.BackgroundTransparency = 1
+Buttons.Position = UDim2.new(0, 50, 0, 50)
+Buttons.Size = UDim2.new(0, 145, 1, -90)
+
+UpvalueScannerBtn.Name = "UpvalueScannerBtn"
+UpvalueScannerBtn.Parent = Buttons
+UpvalueScannerBtn.BackgroundColor3 = Color3.new(1, 1, 1)
+UpvalueScannerBtn.BackgroundTransparency = 1
+UpvalueScannerBtn.Position = UDim2.new(0, 0, 0, 45)
+UpvalueScannerBtn.Size = UDim2.new(1, 0, 0, 40)
+UpvalueScannerBtn.Font = Enum.Font.SourceSans
+UpvalueScannerBtn.Text = "Upvalue Scanner"
+UpvalueScannerBtn.TextColor3 = Color3.new(1, 1, 1)
+UpvalueScannerBtn.TextSize = 16
+
+ScriptDumperBtn.Name = "ScriptDumperBtn"
+ScriptDumperBtn.Parent = Buttons
+ScriptDumperBtn.BackgroundColor3 = Color3.new(1, 1, 1)
+ScriptDumperBtn.BackgroundTransparency = 1
+ScriptDumperBtn.Position = UDim2.new(0, 0, 0, 90)
+ScriptDumperBtn.Size = UDim2.new(1, 0, 0, 40)
+ScriptDumperBtn.Font = Enum.Font.SourceSans
+ScriptDumperBtn.Text = "Script Dumper"
+ScriptDumperBtn.TextColor3 = Color3.new(1, 1, 1)
+ScriptDumperBtn.TextSize = 16
+
+PositionGrabberBtn.Name = "PositionGrabberBtn"
+PositionGrabberBtn.Parent = Buttons
+PositionGrabberBtn.BackgroundColor3 = Color3.new(1, 1, 1)
+PositionGrabberBtn.BackgroundTransparency = 1
+PositionGrabberBtn.Position = UDim2.new(0, 0, 0, 135)
+PositionGrabberBtn.Size = UDim2.new(1, 0, 0, 40)
+PositionGrabberBtn.Font = Enum.Font.SourceSans
+PositionGrabberBtn.Text = "Position Grabber"
+PositionGrabberBtn.TextColor3 = Color3.new(1, 1, 1)
+PositionGrabberBtn.TextSize = 16
+
+RemoteSpyBtn.Name = "RemoteSpyBtn"
+RemoteSpyBtn.Parent = Buttons
+RemoteSpyBtn.BackgroundColor3 = Color3.new(1, 1, 1)
+RemoteSpyBtn.BackgroundTransparency = 1
+RemoteSpyBtn.Size = UDim2.new(1, 0, 0, 40)
+RemoteSpyBtn.Font = Enum.Font.SourceSans
+RemoteSpyBtn.Text = "Remote Spy"
+RemoteSpyBtn.TextColor3 = Color3.new(1, 1, 1)
+RemoteSpyBtn.TextSize = 16
+
+Icons.Name = "Icons"
+Icons.Parent = Selection
+Icons.BackgroundColor3 = Color3.new(1, 1, 1)
+Icons.BackgroundTransparency = 1
+Icons.Position = UDim2.new(0, 5, 0, 50)
+Icons.Size = UDim2.new(0, 40, 1, -90)
+
+RemoteSpyIcon.Name = "RemoteSpyIcon"
+RemoteSpyIcon.Parent = Icons
+RemoteSpyIcon.BackgroundColor3 = Color3.new(1, 1, 1)
+RemoteSpyIcon.BackgroundTransparency = 1
+RemoteSpyIcon.Size = UDim2.new(0, 40, 0, 40)
+RemoteSpyIcon.Image = "rbxassetid://4988303809"
+
+UpvalueScannerIcon.Name = "UpvalueScannerIcon"
+UpvalueScannerIcon.Parent = Icons
+UpvalueScannerIcon.BackgroundColor3 = Color3.new(1, 1, 1)
+UpvalueScannerIcon.BackgroundTransparency = 1
+UpvalueScannerIcon.Position = UDim2.new(0, 0, 0, 45)
+UpvalueScannerIcon.Size = UDim2.new(0, 40, 0, 40)
+UpvalueScannerIcon.Image = "rbxassetid://4988280805"
+
+ScriptDumperIcon.Name = "ScriptDumperIcon"
+ScriptDumperIcon.Parent = Icons
+ScriptDumperIcon.BackgroundColor3 = Color3.new(1, 1, 1)
+ScriptDumperIcon.BackgroundTransparency = 1
+ScriptDumperIcon.Position = UDim2.new(0, 0, 0, 90)
+ScriptDumperIcon.Size = UDim2.new(0, 40, 0, 40)
+ScriptDumperIcon.Image = "rbxassetid://4988251975"
+ScriptDumperIcon.ImageColor3 = Color3.new(0, 0, 0)
+
+PositionGrabberIcon.Name = "PositionGrabberIcon"
+PositionGrabberIcon.Parent = Icons
+PositionGrabberIcon.BackgroundColor3 = Color3.new(1, 1, 1)
+PositionGrabberIcon.BackgroundTransparency = 1
+PositionGrabberIcon.Position = UDim2.new(0, 0, 0, 135)
+PositionGrabberIcon.Size = UDim2.new(0, 40, 0, 40)
+PositionGrabberIcon.Image = "rbxassetid://4988252064"
+
+BorderLine.Name = "BorderLine"
+BorderLine.Parent = Selection
+BorderLine.BackgroundColor3 = Color3.new(0.0784314, 0.0784314, 0.0784314)
+BorderLine.BorderColor3 = Color3.new(0.105882, 0.164706, 0.207843)
+BorderLine.BorderSizePixel = 0
+BorderLine.Position = UDim2.new(1, 0, 0, 0)
+BorderLine.Size = UDim2.new(0, 1, 1, 0)
+BorderLine.Font = Enum.Font.SourceSans
+BorderLine.Text = ""
+BorderLine.TextColor3 = Color3.new(0, 0, 0)
+BorderLine.TextSize = 14
+
+Discord.Name = "Discord"
+Discord.Parent = Selection
+Discord.BackgroundColor3 = Color3.new(1, 1, 1)
+Discord.BackgroundTransparency = 1
+Discord.Position = UDim2.new(0, 0, 1, -40)
+Discord.Size = UDim2.new(1, 0, 0, 40)
+Discord.Font = Enum.Font.SourceSansSemibold
+Discord.Text = "discord.me/sykoscripting"
+Discord.TextColor3 = Color3.new(1, 1, 1)
+Discord.TextSize = 18
+
+Title_2.Name = "Title"
+Title_2.Parent = Selection
+Title_2.BackgroundColor3 = Color3.new(1, 1, 1)
+Title_2.BackgroundTransparency = 1
+Title_2.Size = UDim2.new(1, 0, 0, 50)
+Title_2.Font = Enum.Font.SourceSansBold
+Title_2.Text = "Exo Tool V3"
+Title_2.TextColor3 = Color3.new(1, 1, 1)
+Title_2.TextSize = 24
 
 -- Scripts:
 
