@@ -685,8 +685,8 @@ for i, v in pairs(Remotes) do
 		v = not v
 		Remote.Enabled.BackgroundColor3 = v and Color3.fromRGB(0, 255, 0) or Color3.fromRGB(255, 0, 0)
 	end)
-	Remote.Position = UDim2.new(0, 0, 0, 35 * (Events:GetChildren() - 1))
-	Events.CanvasSize = UDim2.new(0, 0, 0, 35 * Events:GetChildren() - 1)
+	Remote.Position = UDim2.new(0, 0, 0, 35 * (#Events:GetChildren() - 1))
+	Events.CanvasSize = UDim2.new(0, 0, 0, 35 * #Events:GetChildren() - 1)
 end
 
 local DumpBtns = {
