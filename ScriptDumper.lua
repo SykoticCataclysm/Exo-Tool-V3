@@ -12,16 +12,17 @@ end
 
 getgenv().ScriptDump = function(Settings, FolderName)
 	makefolder("Exo Tool V3")
-	makefolder("Exo Tool V3/" .. FolderName)
+	makefolder("Exo Tool V3/Script Dumps")
+	makefolder("Exo Tool V3/Script Dumps/" .. FolderName)
 	function MakeFolder(name)
-		makefolder("Exo Tool V3/" .. FolderName .. "/" .. name)
+		makefolder("Exo Tool V3/Script Dumps/" .. FolderName .. "/" .. name)
 	end
 	function WriteScript(Folder, Script, PathEnd)
 		pcall(function()
 			if Script:IsA("LocalScript") then
-				writefile("Exo Tool V3/" .. FolderName .. "/" .. Folder .. "/LocalScripts/" .. GetPath(Script, PathEnd) .. ".lua", decompile(Script))
+				writefile("Exo Tool V3/Script Dumps/" .. FolderName .. "/" .. Folder .. "/LocalScripts/" .. GetPath(Script, PathEnd) .. ".lua", decompile(Script))
 			elseif Script:IsA("ModuleScript") then
-				writefile("Exo Tool V3/" .. FolderName .. "/" .. Folder .. "/ModuleScripts/" .. GetPath(Script, PathEnd) .. ".lua", decompile(Script))
+				writefile("Exo Tool V3/Script Dumps/" .. FolderName .. "/" .. Folder .. "/ModuleScripts/" .. GetPath(Script, PathEnd) .. ".lua", decompile(Script))
 			end
 		end)
 	end
