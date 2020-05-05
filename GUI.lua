@@ -683,11 +683,18 @@ for i, v in pairs(Remotes) do
 	Remote.Icon.Image = EventIcons[i.ClassName]
 	Remote.RemoteName.Text = i.Name
 	Remote.Enabled.MouseButton1Click:Connect(function()
-		v = not v
-		Remote.Enabled.BackgroundColor3 = v and Color3.fromRGB(0, 255, 0) or Color3.fromRGB(255, 0, 0)
+		v[1] = not v[1]
+		Remote.Enabled.BackgroundColor3 = v[1] and Color3.fromRGB(0, 255, 0) or Color3.fromRGB(255, 0, 0)
 	end)
 	Remote.Position = UDim2.new(0, 0, 0, 35 * (#Events:GetChildren() - 1))
 	Events.CanvasSize = UDim2.new(0, 0, 0, 35 * #Events:GetChildren() - 1)
+	v[3] = Remote
+end
+
+getgenv().UpdateRemote = function(name, args)
+	local Remote = Remotes[name]
+	Remote[2] = Remote[2] + 1
+	Remote[3].Count.Text = tostring(Remote[2])
 end
 
 local DumpBtns = {
