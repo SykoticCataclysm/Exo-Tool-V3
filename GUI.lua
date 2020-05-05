@@ -80,8 +80,10 @@ Selection.Size = UDim2.new(0, 200, 1, 0)
 
 UIGradient.Name = "UIGradient"
 UIGradient.Parent = Selection
-UIGradient.Color = ColorSequence.new({ColorSequenceKeypoint.new(0, Color3.fromRGB(20, 20, 20)), ColorSequenceKeypoint.new(1, Color3.fromRGB(20, 20, 20))})
+UIGradient.Color = ColorSequence.new(Color3.fromRGB(20, 20, 20))
 UIGradient.Enabled = true
+UIGradient.Rotation = 0
+UIGradient.Offset = Vector2.new(0, 0)
 UIGradient.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0, 0.9), NumberSequenceKeypoint.new(1, 0.5)})
 
 BorderLine.Name = "BorderLine"
