@@ -20,7 +20,7 @@ getgenv().ScriptDump = function(Settings, FolderName)
 		if Script:IsA("LocalScript") then
 			writefile("Exo Tool V3/" .. FolderName .. "/" .. Folder .. "/LocalScripts/" .. GetPath(Script, PathEnd) .. ".lua", decompile(Script))
 		elseif Script:IsA("ModuleScript") then
-			writefile("Exo Tool V3/" .. FolderName .. "/" .. Folder .. "/ModuleScript/" .. GetPath(Script, PathEnd) .. ".lua", decompile(Script))
+			writefile("Exo Tool V3/" .. FolderName .. "/" .. Folder .. "/ModuleScripts/" .. GetPath(Script, PathEnd) .. ".lua", decompile(Script))
 		end
 	end
 	for i, v in pairs(Settings) do
@@ -50,7 +50,7 @@ getgenv().ScriptDump = function(Settings, FolderName)
 	if Settings["Nil"] == true then
 		for i, v in pairs(game:GetService("Players").LocalPlayer:GetDescendants()) do
 			if v:IsA("LocalScript") or v:IsA("ModuleScript") then
-				WriteScript("Nil", v, nil)
+				WriteScript("Nil", v)
 			end
 		end
 	end
