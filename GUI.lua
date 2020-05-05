@@ -68,7 +68,7 @@ local FolderName = Instance.new("TextBox")
 -- Properties:
 
 ExoToolV3.Name = "ExoToolV3"
-ExoToolV3.Parent = game:GetService("Players")
+ExoToolV3.Parent = game:GetService("CoreGui")
 
 Selection.Name = "Selection"
 Selection.Parent = ExoToolV3
