@@ -1,9 +1,3 @@
-function MakeFolder(name)
-	pcall(function()
-		makefolder("Exo Tool V3/" .. name)
-	end)
-end
-
 function GetPath(obj, targetParent)
 	local str = obj.Name
 	local Obj, Parent = obj, obj.Parent
@@ -16,19 +10,19 @@ function GetPath(obj, targetParent)
 	return str
 end
 
-function WriteScript(Folder, Script)
-	if Script:IsA("LocalScript") then
-		writefile(Folder .. "/LocalScripts/" .. GetPath(Script), decompile(Script))
-	elseif Script:IsA("ModuleScript") then
-		writefile(Folder .. "/ModuleScript/" .. GetPath(Script), decompile(Script))
-	end
-end
-
 getgenv().ScriptDump = function(Settings, FolderName)
-	pcall(function()
-		makefolder("Exo Tool V3")
-	end)
-	MakeFolder(FolderName)
+	makefolder("Exo Tool V3")
+	makefolder("Exo Tool V3/" .. FolderName)
+	function MakeFolder(name)
+		makefolder("Exo Tool V3/" .. FolderName .. "/" .. name)
+	end
+	function WriteScript(Folder, Script)
+		if Script:IsA("LocalScript") then
+			writefile("Exo Tool V3/" .. FolderName .. "/" .. Folder .. "/LocalScripts/" .. GetPath(Script), decompile(Script))
+		elseif Script:IsA("ModuleScript") then
+			writefile("Exo Tool V3/" .. FolderName .. "/" .. Folder .. "/ModuleScript/" .. GetPath(Script), decompile(Script))
+		end
+	end
 	for i, v in pairs(Settings) do
 		if v == true then
 			MakeFolder(i)
