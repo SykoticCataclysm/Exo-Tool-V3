@@ -502,8 +502,11 @@ local Tabs = {
 for a, b in pairs(Tabs) do
 	a.MouseButton1Click:Connect(function()
 		for c, d in pairs(Tabs) do
-			d.Visible = b == d
+			if b ~= d then
+				d.Visible = false
+			end
 		end
+		b.Visible = not b.Visible
 	end)
 end
 
