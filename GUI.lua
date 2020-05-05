@@ -26,6 +26,7 @@ local ScriptDumperSettings = {
 
 local ExoToolV3 = Instance.new("ScreenGui")
 local Selection = Instance.new("Frame")
+local UIGradient = Instance.new("UIGradient")
 local BorderLine = Instance.new("TextLabel")
 local Title = Instance.new("TextLabel")
 local Discord = Instance.new("TextLabel")
@@ -76,6 +77,12 @@ Selection.BackgroundColor3 = Color3.new(1, 1, 1)
 Selection.BorderColor3 = Color3.new(0.0784314, 0.0784314, 0.0784314)
 Selection.BorderSizePixel = 0
 Selection.Size = UDim2.new(0, 200, 1, 0)
+
+UIGradient.Name = "UIGradient"
+UIGradient.Parent = Selection
+UIGradient.Color = Color3.fromRGB(20, 20, 20)
+UIGradient.Enabled = true
+UIGradient.Transparency = NumberSequence.new(NumberSequenceKeypoint.new(0, 0.9), NumberSequenceKeypoint.new(1, 0.5))
 
 BorderLine.Name = "BorderLine"
 BorderLine.Parent = Selection
