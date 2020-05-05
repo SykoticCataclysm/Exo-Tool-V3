@@ -25,6 +25,7 @@ setreadonly(mt, false)
 
 mt.__namecall = function(inst, ...)
 	if Remotes[inst.ClassName] and CGui.ExoToolV3 then
+		syn_context_set(6)
 		UpdateRemote(inst.Name, {...})
 	end
 	return nc(inst, ...)
