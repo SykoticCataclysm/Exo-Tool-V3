@@ -678,12 +678,15 @@ local Remotes = GetAllRemotes()
 
 for i, v in pairs(Remotes) do
 	local Remote = Template:Clone()
+	Remote.Visible = true
 	Remote.Icon.Image = EventIcons[i.ClassName]
 	Remote.RemoteName.Text = i.Name
 	Remote.Enabled.MouseButton1Click:Connect(function()
 		v = not v
 		Remote.Enabled.BackgroundColor3 = v and Color3.fromRGB(0, 255, 0) or Color3.fromRGB(255, 0, 0)
 	end)
+	Remote.Position = UDim2.new(0, 0, 0, 35 * (Events:GetChildren() - 1))
+	Events.CanvasSize = UDim2.new(0, 0, 0, 35 * Events:GetChildren() - 1)
 end
 
 local DumpBtns = {
