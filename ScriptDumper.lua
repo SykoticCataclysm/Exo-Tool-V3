@@ -18,9 +18,9 @@ getgenv().ScriptDump = function(Settings, FolderName)
 	end
 	function WriteScript(Folder, Script, PathEnd)
 		if Script:IsA("LocalScript") then
-			writefile("Exo Tool V3/" .. FolderName .. "/" .. Folder .. "/LocalScripts/" .. GetPath(Script, PathEnd), decompile(Script))
+			writefile("Exo Tool V3/" .. FolderName .. "/" .. Folder .. "/LocalScripts/" .. GetPath(Script, PathEnd) .. ".lua", decompile(Script))
 		elseif Script:IsA("ModuleScript") then
-			writefile("Exo Tool V3/" .. FolderName .. "/" .. Folder .. "/ModuleScript/" .. GetPath(Script, PathEnd), decompile(Script))
+			writefile("Exo Tool V3/" .. FolderName .. "/" .. Folder .. "/ModuleScript/" .. GetPath(Script, PathEnd) .. ".lua", decompile(Script))
 		end
 	end
 	for i, v in pairs(Settings) do
