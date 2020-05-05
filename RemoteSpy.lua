@@ -10,6 +10,8 @@ getgenv().GetAllRemotes = function()
 	return Remotes
 end
 
+local CGui = game:GetService("CoreGui")
+
 local Remotes = { 
 	["BindableEvent"] = true,
 	["BindableFunction"] = true,
@@ -22,9 +24,10 @@ local nc = mt.__namecall
 setreadonly(mt, false)
 
 mt.__namecall = function(inst, ...)
-	if Remotes[inst.ClassName] then
+	if Remotes[inst.ClassName] and CGui.ExoToolV3 then
 		UpdateRemote(inst.Name, {...})
 	end
+	return nc(inst, ...)
 end
 
 setreadonly(mt, true)
