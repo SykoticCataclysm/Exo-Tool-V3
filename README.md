@@ -10,5 +10,5 @@ Includes:
 
 Credits:
 - Syko - I made it - https://discord.me/sykoscripting
-- Arilis - I based the way the script dumper outputs on his SirHurt dumper - https://discord.gg/FZnrpQT
+- Arilis - I based the way the script dumper outputs on his SirHurt Dumper - https://discord.gg/FZnrpQT
 - Hydroxide - I used their event icons - https://nrv-ous.xyz/hydroxide/discord
