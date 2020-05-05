@@ -10,8 +10,6 @@ getgenv().GetAllRemotes = function()
 	return Remotes
 end
 
-repeat wait() until getgenv().UpdateRemote
-
 local Remotes = { 
 	["BindableEvent"] = true,
 	["BindableFunction"] = true,
