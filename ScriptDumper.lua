@@ -16,11 +16,11 @@ getgenv().ScriptDump = function(Settings, FolderName)
 	function MakeFolder(name)
 		makefolder("Exo Tool V3/" .. FolderName .. "/" .. name)
 	end
-	function WriteScript(Folder, Script)
+	function WriteScript(Folder, Script, PathEnd)
 		if Script:IsA("LocalScript") then
-			writefile("Exo Tool V3/" .. FolderName .. "/" .. Folder .. "/LocalScripts/" .. GetPath(Script), decompile(Script))
+			writefile("Exo Tool V3/" .. FolderName .. "/" .. Folder .. "/LocalScripts/" .. GetPath(Script, PathEnd), decompile(Script))
 		elseif Script:IsA("ModuleScript") then
-			writefile("Exo Tool V3/" .. FolderName .. "/" .. Folder .. "/ModuleScript/" .. GetPath(Script), decompile(Script))
+			writefile("Exo Tool V3/" .. FolderName .. "/" .. Folder .. "/ModuleScript/" .. GetPath(Script, PathEnd), decompile(Script))
 		end
 	end
 	for i, v in pairs(Settings) do
@@ -35,7 +35,7 @@ getgenv().ScriptDump = function(Settings, FolderName)
 			local Service = game:GetService(a)
 			for c, d in pairs(Service:GetDescendants()) do
 				if d:IsA("LocalScript") or d:IsA("ModuleScript") then
-					WriteScript(a, d)
+					WriteScript(a, d, Service)
 				end
 			end
 		end
@@ -43,7 +43,7 @@ getgenv().ScriptDump = function(Settings, FolderName)
 	if Settings["LocalPlayer"] == true then
 		for i, v in pairs(game:GetService("Players").LocalPlayer:GetDescendants()) do
 			if v:IsA("LocalScript") or v:IsA("ModuleScript") then
-				WriteScript("LocalPlayer", v)
+				WriteScript("LocalPlayer", v, game:GetService("Players").LocalPlayer)
 			end
 		end
 	end
