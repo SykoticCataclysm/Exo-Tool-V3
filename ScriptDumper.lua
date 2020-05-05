@@ -51,7 +51,7 @@ getgenv().ScriptDump = function(Settings, FolderName)
 		end
 	end
 	if Settings["Nil"] == true then
-		for i, v in pairs(game:GetService("Players").LocalPlayer:GetDescendants()) do
+		for i, v in pairs(getnilinstances()) do
 			if v:IsA("LocalScript") or v:IsA("ModuleScript") then
 				WriteScript("Nil", v)
 			end
