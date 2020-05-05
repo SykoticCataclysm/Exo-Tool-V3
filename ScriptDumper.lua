@@ -31,7 +31,7 @@ getgenv().ScriptDump = function(Settings, FolderName)
 		end
 	end
 	for a, b in pairs(Settings) do
-		if a ~= "LocalPlayer" and b ~= "Nil" then
+		if a ~= "LocalPlayer" and a ~= "Nil" then
 			local Service = game:GetService(a)
 			for c, d in pairs(Service:GetDescendants()) do
 				if d:IsA("LocalScript") or d:IsA("ModuleScript") then
