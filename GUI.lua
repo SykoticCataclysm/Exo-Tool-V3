@@ -678,6 +678,7 @@ local Remotes = GetAllRemotes()
 
 for i, v in pairs(Remotes) do
 	local Remote = Template:Clone()
+	Remote.Parent = Events
 	Remote.Visible = true
 	Remote.Icon.Image = EventIcons[i.ClassName]
 	Remote.RemoteName.Text = i.Name
