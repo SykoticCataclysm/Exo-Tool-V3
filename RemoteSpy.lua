@@ -39,9 +39,11 @@ mt.__namecall = function(inst, ...)
 	local args = {...}
 	local method = getnamecallmethod()
 	if events[method] and not ignores[inst.Name] then
+		local ret = {nc(inst, ...)}
 		local data = { 
 			["args"] = args,
-			["env"] = getfenv(2)
+			["env"] = getfenv(2),
+			["returns"] = ret
 		}
 		local old = syn_context_get()
 		syn_context_set(6)
@@ -51,6 +53,7 @@ mt.__namecall = function(inst, ...)
 		end
 		ui.updateremote(inst, data)
 		syn_context_set(old)
+		return unpack(ret)
 	end
 	return nc(inst, ...)
 end
