@@ -45,14 +45,11 @@ mt.__namecall = function(inst, ...)
 			["env"] = getfenv(2),
 			["returns"] = ret
 		}
-		local old = syn_context_get()
-		syn_context_set(6)
 		if not remotes[inst] then
 			remotes[inst] = true
 			ui.addremote(inst)
 		end
 		ui.updateremote(inst, data)
-		syn_context_set(old)
 		return unpack(ret)
 	end
 	return nc(inst, ...)
