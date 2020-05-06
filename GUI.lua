@@ -691,11 +691,13 @@ for i, v in pairs(Remotes) do
 	v["GUIItem"] = Remote
 end
 
-getgenv().UpdateRemote = function(name, args)
+local UpdateRemote = Instance.new("BindableEvent", game:GetService("Players").LocalPlayer)
+UpdateRemote.Name = "UpdateRemote"
+UpdateRemote.Event:Connect(function(name, args)
 	local Remote = Remotes[name]
 	Remote["Count"] = Remote["Count"] + 1
 	Remote["GUIItem"].Count.Text = tostring(Remote["Count"])
-end
+end)
 
 local DumpBtns = {
 	Workspace,
