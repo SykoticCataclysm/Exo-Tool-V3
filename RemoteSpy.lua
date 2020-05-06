@@ -8,7 +8,7 @@ local events = {
 }
 
 local ignores = {
-	["GetInitDataRequest"] = true,
+    ["GetInitDataRequest"] = true,
     ["MutePlayerRequest"] = true,
     ["UnMutePlayerRequest"] = true,
     ["ChannelNameColorUpdated"] = true,
@@ -25,7 +25,7 @@ local ignores = {
     ["OnUnmuted"] = true,
     ["SayMessageRequest"] = true,
     ["SetBlockedUserIdsRequest"] = true,
-	["Event"] = true
+    ["Event"] = true
 }
 
 local remotes = {}
