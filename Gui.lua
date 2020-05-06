@@ -696,10 +696,16 @@ if not game:GetService("CoreGui"):FindFirstChild("ExoToolV3") then
 		template.Position = UDim2.new(0, 0, 0, 35 * (#Events:GetChildren() - 2))
 		Events.CanvasSize = UDim2.new(0, 0, 0, 35 * (#Events:GetChildren() - 1))
 		template.Visible = true
+		remotes[inst] = { 
+			["template"] = template,
+			["calls"] = {}
+		}
 	end
 	
-	local updateremote = function(inst)
-		
+	local updateremote = function(inst, call)
+		local remote = remotes[inst]
+		table.insert(remote.calls, #remote.calls + 1, call)
+		remote.template.Count.Text = tostring(#remote.calls)
 	end
 	
 	ui.addremote = addremote
