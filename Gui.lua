@@ -658,7 +658,8 @@ if not game:GetService("CoreGui"):FindFirstChild("ExoToolV3") then
 	Template.Parent = Events
 	Template.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	Template.BackgroundTransparency = 1.000
-	Template.Size = UDim2.new(0, 295, 0, 30)
+	Template.Size = UDim2.new(0, 345, 0, 30)
+	Template.Visible = false
 	
 	Icon.Name = "Icon"
 	Icon.Parent = Template
