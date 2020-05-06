@@ -21,6 +21,8 @@ if not game:GetService("CoreGui"):FindFirstChild("ExoToolV3") then
 		["Nil"] = true
 	}
 	
+	local Dumper = loadstring(game:HttpGet("https://raw.githubusercontent.com/SykoticCataclysm/Exo-Tool-V3/master/ScriptDumper.lua", true))()
+	
 	local ExoToolV3 = Instance.new("ScreenGui")
 	local ScriptDumper = Instance.new("Frame")
 	local Title = Instance.new("TextLabel")
@@ -678,7 +680,7 @@ if not game:GetService("CoreGui"):FindFirstChild("ExoToolV3") then
 	
 	Dump.MouseButton1Click:Connect(function()
 		local Name = FolderName.Text ~= "" and FolderName.Text or GameName
-		ScriptDump(ScriptDumperSettings, Name)
+		Dumper.Dump(ScriptDumperSettings, Name)
 	end)
 	
 	local remotes = {}
