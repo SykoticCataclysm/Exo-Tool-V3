@@ -22,10 +22,8 @@ mt.__namecall = newcclosure(function(inst, ...)
 	local Method = getnamecallmethod()
 	if RemoteEvents[Method] then
 		UpdateRemote(inst.Name, {...})
-	elseif HttpMethods[Method] then		-- Yes, The Source Is On Github. This Is Just So It Doesn't Spy Itself.
-		if not Args[1]:find("raw.githubusercontent.com/SykoticCataclysm/Exo-Tool-V3/master/") then
-			print(Args[1])
-		end
+	elseif HttpMethods[Method] then
+
 	end
 	return nc(inst, ...)
 end)
