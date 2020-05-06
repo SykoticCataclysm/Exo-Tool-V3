@@ -17,7 +17,7 @@ local mt = getrawmetatable(game)
 local nc = mt.__namecall
 setreadonly(mt, false)
 
-mt.__namecall = newcclosure(function(inst, ...)
+mt.__namecall = function(inst, ...)
 	local Args = {...}
 	local Method = getnamecallmethod()
 	if RemoteEvents[Method] then
@@ -26,6 +26,6 @@ mt.__namecall = newcclosure(function(inst, ...)
 
 	end
 	return nc(inst, ...)
-end)
+end
 
 setreadonly(mt, true)
