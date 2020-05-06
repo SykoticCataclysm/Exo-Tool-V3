@@ -1,4 +1,16 @@
-function GetPath(obj, targetParent)
+getgenv().GetAllRemotes = function()
+	local Remotes = {}
+	for i, v in pairs(game:GetDescendants()) do
+		if v:IsA("BindableEvent") or v:IsA("BindableFunction") or v:IsA("RemoteEvent") or v:IsA("RemoteFunction") then
+			if not Remotes[v.Name] then
+				Remotes[v.Name] = { true, 0, nil, {} }
+			end
+		end
+	end
+	return Remotes
+end
+
+getgenv().GetPath = function(obj, targetParent)
 	local str = obj.Name
 	local Obj, Parent = obj, obj.Parent
 	if Parent and Parent ~= targetParent then
