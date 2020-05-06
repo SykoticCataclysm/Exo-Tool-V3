@@ -3,16 +3,16 @@ local ui = {}
 if not game:GetService("CoreGui"):FindFirstChild("ExoToolV3") then
 	repeat wait() until game:IsLoaded()
 	
-	local GameName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name
+	local gamename = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name
 	
-	local EventIcons = {
+	local eventicons = {
 		["BindableEvent"] = "rbxassetid://4229809371",
 		["BindableFunction"] = "rbxassetid://4229807624",
 		["RemoteEvent"] = "rbxassetid://4229806545",
 		["RemoteFunction"] = "rbxassetid://4229810474"
 	}
 	
-	local ScriptDumperSettings = {
+	local scriptdumpersettings = {
 		["Workspace"] = true,
 		["ReplicatedFirst"] = true,
 		["ReplicatedStorage"] = true,
@@ -21,7 +21,7 @@ if not game:GetService("CoreGui"):FindFirstChild("ExoToolV3") then
 		["Nil"] = true
 	}
 	
-	local Dumper = loadstring(game:HttpGet("https://raw.githubusercontent.com/SykoticCataclysm/Exo-Tool-V3/master/ScriptDumper.lua", true))()
+	local dumper = loadstring(game:HttpGet("https://raw.githubusercontent.com/SykoticCataclysm/Exo-Tool-V3/master/ScriptDumper.lua", true))()
 	
 	local ExoToolV3 = Instance.new("ScreenGui")
 	local ScriptDumper = Instance.new("Frame")
@@ -673,14 +673,14 @@ if not game:GetService("CoreGui"):FindFirstChild("ExoToolV3") then
 	
 	for i, v in pairs(DumpBtns) do
 		v.MouseButton1Click:Connect(function()
-			ScriptDumperSettings[v.Name] = not ScriptDumperSettings[v.Name]
-			v.BackgroundColor3 = ScriptDumperSettings[v.Name] and Color3.fromRGB(0, 255, 0) or Color3.fromRGB(255, 0, 0)
+			scriptdumpersettings[v.Name] = not scriptdumpersettings[v.Name]
+			v.BackgroundColor3 = scriptdumpersettings[v.Name] and Color3.fromRGB(0, 255, 0) or Color3.fromRGB(255, 0, 0)
 		end)
 	end
 	
 	Dump.MouseButton1Click:Connect(function()
-		local Name = FolderName.Text ~= "" and FolderName.Text or GameName
-		Dumper.Dump(ScriptDumperSettings, Name)
+		local name = FolderName.Text ~= "" and FolderName.Text or gamename
+		dumper.dump(scriptdumpersettings, name)
 	end)
 	
 	local remotes = {}
@@ -690,7 +690,7 @@ if not game:GetService("CoreGui"):FindFirstChild("ExoToolV3") then
 		local class = inst.ClassName
 		local template = Template:Clone()
 		template.Parent = Events
-		template.Icon.Image = EventIcons[class]
+		template.Icon.Image = eventicons[class]
 		template.RemoteName.Text = name
 		template.Name = name
 		template.Position = UDim2.new(0, 0, 0, 35 * (#Events:GetChildren() - 2))
