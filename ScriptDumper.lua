@@ -1,5 +1,17 @@
 local Dumper = {}
 
+local GetPath = function(Obj, Target)
+	local str = Obj.Name
+	local obj, parent = Obj, Obj.Parent
+	if parent and parent ~= Target then
+		repeat
+			obj, parent = parent, parent.Parent
+			str = obj.Name .. "." .. str
+		until parent == Target
+	end
+	return str
+end
+
 local ScriptDump = function(Settings, FolderName)
 	makefolder("Exo Tool V3")
 	makefolder("Exo Tool V3/Script Dumps")
