@@ -970,8 +970,11 @@ if not game:GetService("CoreGui"):FindFirstChild("ExoToolV3") then
 		}
 		remotes[inst]["callsframe"].RemoteName.Text = inst.Name
 		template.Enabled.MouseButton1Click:Connect(function()
+			local old = syn_context_get()
+			syn_context_set(6)
 			remotes[inst]["enabled"] = not remotes[inst]["enabled"]
 			template.Enabled.BackgroundColor3 = remotes[inst]["enabled"] and Color3.fromRGB(0, 255, 0) or Color3.fromRGB(255, 0, 0)
+			syn_context_set(old)
 		end)
 		template.OpenCalls.MouseButton1Click:Connect(function()
 			for i, v in pairs(remotes) do
