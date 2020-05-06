@@ -13,6 +13,8 @@ local HttpMethods = {
 	["GetObjects"] = true
 }
 
+local UpdateRemote = game:GetService("Players").LocalPlayer:WaitForChild("UpdateRemote")
+
 local mt = getrawmetatable(game)
 local nc = mt.__namecall
 setreadonly(mt, false)
@@ -21,7 +23,7 @@ mt.__namecall = function(inst, ...)
 	local Args = {...}
 	local Method = getnamecallmethod()
 	if RemoteEvents[Method] then
-		UpdateRemote(inst.Name, {...})
+		UpdateRemote:Fire(inst.Name, Args)
 	elseif HttpMethods[Method] then
 
 	end
