@@ -680,7 +680,7 @@ for i, v in pairs(Remotes) do
 	local Remote = Template:Clone()
 	Remote.Parent = Events
 	Remote.Visible = true
-	Remote.Icon.Image = Remotes["Type"]
+	Remote.Icon.Image = v["Type"]
 	Remote.RemoteName.Text = i.Name
 	Remote.Enabled.MouseButton1Click:Connect(function()
 		v["Enabled"] = not v["Enabled"]
