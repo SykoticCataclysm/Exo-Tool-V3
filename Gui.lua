@@ -978,6 +978,7 @@ if not game:GetService("CoreGui"):FindFirstChild("ExoToolV3") then
 			syn_context_set(old)
 		end)
 		template.OpenCalls.MouseButton1Click:Connect(function()
+			print("Clicked!")
 			for i, v in pairs(remotes) do
 				if v ~= remotes[inst] then
 					v.callsframe.Visible = false
