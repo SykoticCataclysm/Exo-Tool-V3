@@ -681,7 +681,7 @@ for i, v in pairs(Remotes) do
 	Remote.Parent = Events
 	Remote.Visible = true
 	Remote.Icon.Image = v["Type"]
-	Remote.RemoteName.Text = i.Name
+	Remote.RemoteName.Text = i
 	Remote.Enabled.MouseButton1Click:Connect(function()
 		v["Enabled"] = not v["Enabled"]
 		Remote.Enabled.BackgroundColor3 = v["Enabled"] and Color3.fromRGB(0, 255, 0) or Color3.fromRGB(255, 0, 0)
