@@ -7,7 +7,7 @@ local events = {
 	["InvokeServer"] = true
 }
 
-local Remotes = {}
+local remotes = {}
 
 local mt = getrawmetatable(game)
 local nc = mt.__namecall
@@ -19,8 +19,8 @@ mt.__namecall = function(inst, ...)
 	if events[method] then
 		local old = syn_context_get()
 		syn_context_set(6)
-		if not Remotes[inst] then
-			Remotes[inst] = true
+		if not remotes[inst] then
+			remotes[inst] = true
 			ui.addremote(inst)
 		end
 		ui.updateremote(inst, { 
