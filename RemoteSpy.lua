@@ -7,14 +7,6 @@ local RemoteEvents = {
 	["InvokeServer"] = true
 }
 
-local HttpMethods = {
-	["HttpGet"] = true,
-	["HttpGetAsync"] = true,
-	["HttpPost"] = true,
-	["HttpPostAsync"] = true,
-	["GetObjects"] = true
-}
-
 local Remotes = {}
 
 local mt = getrawmetatable(game)
@@ -31,8 +23,6 @@ mt.__namecall = function(inst, ...)
 		else
 			ui.updateremote(inst)
 		end
-	elseif HttpMethods[Method] then
-
 	end
 	return nc(inst, ...)
 end
