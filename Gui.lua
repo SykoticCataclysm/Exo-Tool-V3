@@ -698,14 +698,21 @@ if not game:GetService("CoreGui"):FindFirstChild("ExoToolV3") then
 		template.Visible = true
 		remotes[inst] = { 
 			["template"] = template,
-			["calls"] = {}
+			["calls"] = {},
+			["enabled"] = true
 		}
+		template.Enabled.MouseButton1Click:Connect(function()
+			remotes[inst]["enabled"] = not remotes[inst]["enabled"]
+			template.Enabled.BackgroundColor3 = remotes[inst]["enabled"] and Color3.fromRGB(0, 255, 0) or Color3.fromRGB(255, 0, 0)
+		end)
 	end
 	
 	local updateremote = function(inst, call)
 		local remote = remotes[inst]
-		table.insert(remote.calls, #remote.calls + 1, call)
-		remote.template.Count.Text = tostring(#remote.calls)
+		if remote["enabled"] then
+			table.insert(remote.calls, #remote.calls + 1, call)
+			remote.template.Count.Text = tostring(#remote.calls)
+		end
 	end
 	
 	ui.addremote = addremote
