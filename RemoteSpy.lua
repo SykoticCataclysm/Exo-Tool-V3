@@ -35,16 +35,18 @@ local nc = mt.__namecall
 setreadonly(mt, false)
 
 mt.__namecall = function(inst, ...)
+	local returns = nil
 	local args = {...}
 	local method = getnamecallmethod()
 	if events[method] and not ignores[inst.Name] then
+		if inst.Name:find("Function") then
+			returns = {nc(inst, ...)}
+		end
 		local data = { 
 			["args"] = args,
-			["env"] = getfenv(2)
+			["env"] = getfenv(2),
+			["returns"] = returns
 		}
-		if inst.Name:find("Function") then
-			data["returns"] = table.pack(nc(inst, ...))
-		end
 		local old = syn_context_get()
 		syn_context_set(6)
 		if not remotes[inst] then
@@ -53,11 +55,8 @@ mt.__namecall = function(inst, ...)
 		end
 		ui.updateremote(inst, data)
 		syn_context_set(old)
-		if data["returns"] then 
-			return unpack(data["returns"])
-		end
 	end
-	return nc(inst, ...)
+	return returns ~= nil and unpack(returns) or nc(inst, ...)
 end
 
 setreadonly(mt, true)
