@@ -680,21 +680,21 @@ for i, v in pairs(Remotes) do
 	local Remote = Template:Clone()
 	Remote.Parent = Events
 	Remote.Visible = true
-	Remote.Icon.Image = EventIcons[i.ClassName]
+	Remote.Icon.Image = Remotes["Type"]
 	Remote.RemoteName.Text = i.Name
 	Remote.Enabled.MouseButton1Click:Connect(function()
-		v[1] = not v[1]
-		Remote.Enabled.BackgroundColor3 = v[1] and Color3.fromRGB(0, 255, 0) or Color3.fromRGB(255, 0, 0)
+		v["Enabled"] = not v["Enabled"]
+		Remote.Enabled.BackgroundColor3 = v["Enabled"] and Color3.fromRGB(0, 255, 0) or Color3.fromRGB(255, 0, 0)
 	end)
 	Remote.Position = UDim2.new(0, 0, 0, 35 * (#Events:GetChildren() - 1))
 	Events.CanvasSize = UDim2.new(0, 0, 0, 35 * #Events:GetChildren() - 1)
-	v[3] = Remote
+	v["GUIItem"] = Remote
 end
 
 getgenv().UpdateRemote = function(name, args)
 	local Remote = Remotes[name]
-	Remote[2] = Remote[2] + 1
-	Remote[3].Count.Text = tostring(Remote[2])
+	Remote["Count"] = Remote["Count"] + 1
+	Remote["GUIItem"].Count.Text = tostring(Remote["Count"])
 end
 
 local DumpBtns = {
