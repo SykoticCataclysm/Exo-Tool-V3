@@ -1,6 +1,6 @@
 local ui = loadstring(game:HttpGet("https://raw.githubusercontent.com/SykoticCataclysm/Exo-Tool-V3/master/Gui.lua", true))()
 
-local RemoteEvents = { 
+local events = { 
 	["Fire"] = true,
 	["FireServer"] = true,
 	["Invoke"] = true,
@@ -14,17 +14,17 @@ local nc = mt.__namecall
 setreadonly(mt, false)
 
 mt.__namecall = function(inst, ...)
-	local Args = {...}
-	local Method = getnamecallmethod()
-	if RemoteEvents[Method] then
+	local args = {...}
+	local method = getnamecallmethod()
+	if events[method] then
 		local old = syn_context_get()
 		syn_context_set(6)
 		if not Remotes[inst] then
 			Remotes[inst] = true
 			ui.addremote(inst)
 		end
-		ui.updateremote(inst, {
-			["args"] = Args
+		ui.updateremote(inst, { 
+		 ["args"] = args 
 		})
 		syn_context_set(old)
 	end
