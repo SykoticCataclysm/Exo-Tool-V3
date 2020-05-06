@@ -3,7 +3,7 @@ getgenv().GetAllRemotes = function()
 	for i, v in pairs(game:GetDescendants()) do
 		if v:IsA("BindableEvent") or v:IsA("BindableFunction") or v:IsA("RemoteEvent") or v:IsA("RemoteFunction") then
 			if not Remotes[v.Name] then
-				Remotes[v.Name] = { true, 0, nil, {} }
+				Remotes[v.Name] = { true, 0, {} }
 			end
 		end
 	end
