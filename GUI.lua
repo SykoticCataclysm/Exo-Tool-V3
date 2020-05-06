@@ -674,30 +674,29 @@ for a, b in pairs(Tabs) do
 	end)
 end
 
-local Remotes = GetAllRemotes()
+local Remotes = {}
 
-for i, v in pairs(Remotes) do
+getgenv().AddRemote = function(inst, args)
 	local Remote = Template:Clone()
 	Remote.Parent = Events
 	Remote.Visible = true
-	Remote.Icon.Image = v["Type"]
-	Remote.RemoteName.Text = i
+	Remote.Icon.Image = args["Type"]
+	Remote.RemoteName.Text = inst.Name
 	Remote.Enabled.MouseButton1Click:Connect(function()
-		v["Enabled"] = not v["Enabled"]
-		Remote.Enabled.BackgroundColor3 = v["Enabled"] and Color3.fromRGB(0, 255, 0) or Color3.fromRGB(255, 0, 0)
+		args["Enabled"] = not args["Enabled"]
+		Remote.Enabled.BackgroundColor3 = args["Enabled"] and Color3.fromRGB(0, 255, 0) or Color3.fromRGB(255, 0, 0)
 	end)
-	Remote.Position = UDim2.new(0, 0, 0, 35 * (#Events:GetChildren() - 1))
-	Events.CanvasSize = UDim2.new(0, 0, 0, 35 * #Events:GetChildren() - 1)
-	v["GUIItem"] = Remote
+	Remote.Position = UDim2.new(0, 0, 0, 35 * (#Events:GetChildren() - 2))
+	Events.CanvasSize = UDim2.new(0, 0, 0, 35 * #Events:GetChildren() - 2)
+	args["GUIItem"] = Remote
+	Remotes[inst] = args
 end
 
-local UpdateRemote = Instance.new("BindableEvent", game:GetService("Players").LocalPlayer)
-UpdateRemote.Name = "UpdateRemote"
-UpdateRemote.Event:Connect(function(name, args)
-	local Remote = Remotes[name]
+getgenv().UpdateRemote = function(inst, call)
+	local Remote = Remotes[inst]
 	Remote["Count"] = Remote["Count"] + 1
 	Remote["GUIItem"].Count.Text = tostring(Remote["Count"])
-end)
+end
 
 local DumpBtns = {
 	Workspace,
