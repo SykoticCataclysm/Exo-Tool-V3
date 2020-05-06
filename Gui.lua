@@ -684,7 +684,7 @@ if not game:GetService("CoreGui"):FindFirstChild("ExoToolV3") then
 	end)
 	
 	local remotes = {}
-
+	
 	local addremote = function(inst)
 		local name = inst.Name
 		local class = inst.ClassName
@@ -698,7 +698,12 @@ if not game:GetService("CoreGui"):FindFirstChild("ExoToolV3") then
 		template.Visible = true
 	end
 	
+	local updateremote = function(inst)
+		
+	end
+	
 	ui.addremote = addremote
+	ui.updateremote = updateremote
 end
 
 return ui
