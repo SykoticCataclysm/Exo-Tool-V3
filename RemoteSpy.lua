@@ -23,7 +23,9 @@ mt.__namecall = function(inst, ...)
 			Remotes[inst] = true
 			ui.addremote(inst)
 		else
-			ui.updateremote(inst)
+			ui.updateremote(inst, {
+				["args"] = Args
+			})
 		end
 		syn_context_set(old)
 	end
