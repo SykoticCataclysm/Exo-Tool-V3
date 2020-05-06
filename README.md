@@ -15,4 +15,4 @@ Credits:
 
 The Http spy isn't here to be used for cracking, it's there as a tool to be bypassed. Don't get yourself blacklisted from paid scripts with it.
 
-Any improvements are welcomed, dm me on discord.
+I'm fairly certain most of this could be done alot more efficiently, so any improvements are welcomed, dm me on discord.
