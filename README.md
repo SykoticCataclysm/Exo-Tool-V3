@@ -9,6 +9,10 @@ Includes:
 - Position Grabber [ Coming Soon ]
 
 Credits:
-- Syko - I made it - https://discord.me/sykoscripting
+- Syko ( Me ) - I made it - https://discord.me/sykoscripting
 - Arilis - I based the way the script dumper outputs on his SirHurt Dumper - https://discord.gg/FZnrpQT
 - Hydroxide - I used their event icons - https://nrv-ous.xyz/hydroxide/discord
+
+The Http spy isn't here to be used for cracking, it's there as a tool to be bypassed. Don't get yourself blacklisted from paid scripts with it.
+
+Any improvements are welcomed, dm me on discord.
