@@ -1,6 +1,6 @@
-local Dumper = {}
+local dumper = {}
 
-local GetPath = function(Obj, Target)
+local getpath = function(Obj, Target)
 	local str = Obj.Name
 	local obj, parent = Obj, Obj.Parent
 	if parent and parent ~= Target then
@@ -12,19 +12,19 @@ local GetPath = function(Obj, Target)
 	return str
 end
 
-local ScriptDump = function(Settings, FolderName)
+local dump = function(Settings, FolderName)
 	makefolder("Exo Tool V3")
 	makefolder("Exo Tool V3/Script Dumps")
 	makefolder("Exo Tool V3/Script Dumps/" .. FolderName)
-	function MakeFolder(name)
-		makefolder("Exo Tool V3/Script Dumps/" .. FolderName .. "/" .. name)
+	function MakeFolder(Name)
+		makefolder("Exo Tool V3/Script Dumps/" .. FolderName .. "/" .. Name)
 	end
 	function WriteScript(Folder, Script, PathEnd)
 		pcall(function()
 			if Script:IsA("LocalScript") then
-				writefile("Exo Tool V3/Script Dumps/" .. FolderName .. "/" .. Folder .. "/LocalScripts/" .. GetPath(Script, PathEnd) .. ".lua", decompile(Script))
+				writefile("Exo Tool V3/Script Dumps/" .. FolderName .. "/" .. Folder .. "/LocalScripts/" .. getpath(Script, PathEnd) .. ".lua", decompile(Script))
 			elseif Script:IsA("ModuleScript") then
-				writefile("Exo Tool V3/Script Dumps/" .. FolderName .. "/" .. Folder .. "/ModuleScripts/" .. GetPath(Script, PathEnd) .. ".lua", decompile(Script))
+				writefile("Exo Tool V3/Script Dumps/" .. FolderName .. "/" .. Folder .. "/ModuleScripts/" .. getpath(Script, PathEnd) .. ".lua", decompile(Script))
 			end
 		end)
 	end
@@ -61,6 +61,6 @@ local ScriptDump = function(Settings, FolderName)
 	end
 end
 
-Dumper.Dump = ScriptDump
+dumper.dump = dump
 
-return Dumper
+return dumper
