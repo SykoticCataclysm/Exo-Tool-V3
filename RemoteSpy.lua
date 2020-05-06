@@ -38,23 +38,23 @@ mt.__namecall = function(inst, ...)
 	local args = {...}
 	local method = getnamecallmethod()
 	if events[method] and not ignores[inst.Name] then
+		local data = { 
+			["args"] = args,
+			["env"] = getfenv(2)
+		}
+		if inst.Name:find("Function") then
+			data["returns"] = table.pack(nc(inst, ...))
+		end
 		local old = syn_context_get()
 		syn_context_set(6)
 		if not remotes[inst] then
 			remotes[inst] = true
 			ui.addremote(inst)
 		end
-		local data = { 
-			["args"] = args,
-			["env"] = getfenv(2)
-		}
-		if inst.Name:find("Function") then
-			data["returns"] = { nc(inst, ...) }
-		end
 		ui.updateremote(inst, data)
 		syn_context_set(old)
-		if data.returns then 
-			return unpack(data.returns)
+		if data["returns"] then 
+			return unpack(data["returns"])
 		end
 	end
 	return nc(inst, ...)
