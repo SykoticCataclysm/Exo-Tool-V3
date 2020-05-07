@@ -585,7 +585,7 @@ if not coregui:FindFirstChild("ExoToolV3") then
 	ItemName.Font = Enum.Font.SourceSans
 	ItemName.Text = "Scan Result"
 	ItemName.TextColor3 = Color3.new(1, 1, 1)
-	ItemName.TextSize = 20
+	ItemName.TextSize = 16
 	ItemName.TextXAlignment = Enum.TextXAlignment.Left
 	
 	ItemValue.Name = "ItemValue"
@@ -597,7 +597,7 @@ if not coregui:FindFirstChild("ExoToolV3") then
 	ItemValue.Font = Enum.Font.SourceSans
 	ItemValue.Text = "Scan Value"
 	ItemValue.TextColor3 = Color3.new(1, 1, 1)
-	ItemValue.TextSize = 20
+	ItemValue.TextSize = 16
 	ItemValue.TextXAlignment = Enum.TextXAlignment.Right
 	
 	UpvalueSearch.Name = "UpvalueSearch"
@@ -646,7 +646,7 @@ if not coregui:FindFirstChild("ExoToolV3") then
 	-- Upvalue Scanner
 	
 	UpvalueSearch.FocusLost:Connect(function(enterpressed)
-		if enterpressed then
+		if enterpressed and UpvalueSearch.Text ~= "" then
 			for i, v in pairs(Results:GetChildren()) do
 				if v.Visible == true then
 					v:Destroy()
