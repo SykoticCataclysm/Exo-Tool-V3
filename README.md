@@ -13,6 +13,8 @@ Known Supported Exploits:
 - Synapse X, SirHurt
 
 Exploit Requirements:
+- debug.getupvalues or getupvalues
+- getgc or get_gc_objects
 - getgenv
 - getrawmetatable or debug.getmetatable
 - setreadonly or make_readonly
