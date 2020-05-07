@@ -13,6 +13,7 @@ Known Supported Exploits:
 - Synapse X, SirHurt
 
 Exploit Requirements:
+- getgenv
 - decompile
 - makefolder
 - writefile
