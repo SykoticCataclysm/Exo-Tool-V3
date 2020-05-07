@@ -1,4 +1,11 @@
-local ui = {}
+local ui = {
+	options = {
+		httpspyenabled = true
+	},
+	log = function(txt)
+		warn("[Exo Tool V3]: " .. txt)
+	end
+}
 
 local CoreGui = game:GetService("CoreGui")
 
