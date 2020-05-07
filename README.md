@@ -16,6 +16,7 @@ Exploit Requirements:
 - getgenv
 - getrawmetatable or debug.getmetatable
 - setreadonly or make_readonly or make_writeable
+- newcclosure or new_c_closure
 - decompile
 - makefolder
 - writefile
