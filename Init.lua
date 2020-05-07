@@ -1,3 +1,5 @@
+repeat wait() until game:IsLoaded()
+
 warn("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=")
 warn("")
 warn("            ExoTool V3 - Made By Syko            ")
