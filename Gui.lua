@@ -297,6 +297,7 @@ if not coregui:FindFirstChild("ExoToolV3") then
 	Selection.BackgroundColor3 = Color3.new(1, 1, 1)
 	Selection.BackgroundTransparency = 1
 	Selection.BorderColor3 = Color3.new(0.0784314, 0.0784314, 0.0784314)
+	Selection.ClipsDescendants = true
 	Selection.Size = UDim2.new(0, 200, 1, 0)
 	Selection.Image = "rbxassetid://4989806496"
 	
@@ -436,7 +437,7 @@ if not coregui:FindFirstChild("ExoToolV3") then
 	CloseKey.Position = UDim2.new(0, 0, 1, -70)
 	CloseKey.Size = UDim2.new(1, 0, 0, 30)
 	CloseKey.Font = Enum.Font.SourceSansSemibold
-	CloseKey.Text = "Open/Close: RightAlt"
+	CloseKey.Text = "Open/Close: LeftAlt"
 	CloseKey.TextColor3 = Color3.new(1, 1, 1)
 	CloseKey.TextSize = 16
 	
@@ -620,7 +621,7 @@ if not coregui:FindFirstChild("ExoToolV3") then
 	local open = true
 	
 	userinput.InputBegan:Connect(function(input, istyping)
-		if not istyping and input.KeyCode == Enum.KeyCode.RightAlt then
+		if not istyping and input.KeyCode == Enum.KeyCode.LeftAlt then
 			open = not open
 			Selection:TweenSize(UDim2.new(0, open and 200 or 0, 1, 0))
 		end
