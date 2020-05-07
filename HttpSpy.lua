@@ -10,7 +10,7 @@ local methods = {
 
 local mt = getrawmetatable(game)
 local nc = mt.__namecall
-setreadonly(nc, false)
+setreadonly(mt, false)
 
 mt.__namecall = newcclosure(function(inst, ...)
 	local method = getnamecallmethod()
