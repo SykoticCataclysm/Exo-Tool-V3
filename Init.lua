@@ -1,3 +1,5 @@
+warn("[Exo Tool V3]: Waiting For The Game To Finish Loading...")
+
 repeat wait() until game:IsLoaded()
 
 warn("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=")
