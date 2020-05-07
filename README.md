@@ -13,6 +13,7 @@ Known Supported Exploits:
 - Synapse X, SirHurt
 
 Exploit Requirements:
+- is_synapse_function or is_protosmasher_closure or is_sirhurt_closure
 - debug.getupvalues or getupvalues
 - getgc or get_gc_objects
 - getgenv
