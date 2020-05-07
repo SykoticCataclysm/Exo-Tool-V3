@@ -7,7 +7,7 @@ Includes:
 - Upvalue Scanner [ Coming Soon ]
 - Script Dumper
 - Position Grabber
-- Http Spy [ Coming Soon ]
+- Http Spy [ UI Coming Soon, Currently Outputs To Developer Console ]
 
 Known Supported Exploits:
 - Synapse X, SirHurt
