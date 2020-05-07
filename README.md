@@ -1,12 +1,23 @@
 Exo Tool V3
 
 Scripting Tool For Roblox Exploiting
+
 Includes:
-- Remote Spy [ In Progress ]
-- Script Dumper
-- Http Spy [ Coming Soon ]
+- Remote Spy [ Coming Soon ]
 - Upvalue Scanner [ Coming Soon ]
-- Position Grabber [ Coming Soon ]
+- Script Dumper
+- Position Grabber
+- Http Spy [ Coming Soon ]
+
+Known Supported Exploits:
+- Synapse X, SirHurt
+
+Exploit Requirements:
+- decompile
+- makefolder
+- writefile
+- setclipboard or Clipboard.set
+- getnilinstances or get_nil_instances
 
 Credits:
 - Syko ( Me ) - I made it - https://discord.me/sykoscripting
