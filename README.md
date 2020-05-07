@@ -15,7 +15,7 @@ Known Supported Exploits:
 Exploit Requirements:
 - getgenv
 - getrawmetatable or debug.getmetatable
-- setreadonly or make_readonly or make_writeable
+- setreadonly or make_readonly
 - newcclosure
 - getnamecallmethod
 - decompile
