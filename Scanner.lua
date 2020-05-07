@@ -8,7 +8,7 @@ local scanupvalues = function(search)
 			for c, d in next, getupvalues(b) do
 				if type(d) == "table" then
 					for e, f in next, d do
-						if tostring(e):find(search) then
+						if tostring(e):lower():find(search) then
 							results[tostring(e)] = f
 						end
 					end
