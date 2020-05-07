@@ -17,6 +17,7 @@ Exploit Requirements:
 - getrawmetatable or debug.getmetatable
 - setreadonly or make_readonly or make_writeable
 - newcclosure
+- getnamecallmethod
 - decompile
 - makefolder
 - writefile
