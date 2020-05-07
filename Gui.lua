@@ -655,10 +655,12 @@ if not coregui:FindFirstChild("ExoToolV3") then
 			local results = scanner.scanupvalues(UpvalueSearch.Text)
 			for i, v in pairs(results) do
 				local template = Template:Clone()
+				template.Parent = Results
 				template.ItemName.Text = i
 				template.ItemValue.Text = tostring(v)
 				template.Position = UDim2.new(0, 0, 0, 30 * (#Results:GetChildren() - 2))
 				Results.CanvasSize = UDim2.new(0, 0, 0, 30 * (#Results:GetChildren() - 1))
+				template.Visible = true
 			end
 		end
 	end)
