@@ -40,10 +40,12 @@ gettype = function(Instance)
 end
 
 local generatescript = function(val)
-	return "local newval = 100\n"
+	return "local newval = 100\n\n"
+	.. "local getgc = getgc or get_gc_objects"
+	.. "local getupvalues = debug.getupvalues or getupvalues or getupvals"
 	.. "for a, b in next, getgc() do\n"
 	.. "    if type(b) == 'function' then\n"
-	.. "        for c, d in next, debug.getupvalues(b) do\n"
+	.. "        for c, d in next, getupvalues(b) do\n"
 	.. "            if type(d) == 'table' and rawget(d, '" .. val .. "') then\n"
 	.. "                d." .. val .. " = newval\n"
 	.. "            end\n"
