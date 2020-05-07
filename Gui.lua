@@ -568,7 +568,7 @@ if not CoreGui:FindFirstChild("ExoToolV3") then
 		end
 	end)
 	
-	coroutine.wrap(function()
+	coroutine.resume(coroutine.create(function()
 		while wait() do
 			if Plr.Character then
 				local pos = Plr.Character.HumanoidRootPart.Position
@@ -576,7 +576,7 @@ if not CoreGui:FindFirstChild("ExoToolV3") then
 				CurrentPos.Text = round(pos.X, places) .. ", " .. round(pos.Y, places) .. ", " .. round(pos.Z, places)
 			end
 		end
-	end)
+	end))
 	
 	CopyPosition.MouseButton1Click:Connect(function()
 		setclipboard(CurrentPos.Text)
