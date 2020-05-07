@@ -709,7 +709,7 @@ if not coregui:FindFirstChild("ExoToolV3") then
 	
 	coroutine.resume(coroutine.create(function()
 		while wait() do
-			if plr.Character then
+			if plr.Character and plr.Character:FindFirstChild("HumanoidRootPart") then
 				local pos = plr.Character.HumanoidRootPart.Position
 				local places = tonumber(Decimals.Text)
 				CurrentPos.Text = round(pos.X, places) .. ", " .. round(pos.Y, places) .. ", " .. round(pos.Z, places)
