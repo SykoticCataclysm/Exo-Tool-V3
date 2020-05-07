@@ -559,7 +559,9 @@ if not CoreGui:FindFirstChild("ExoToolV3") then
 	end
 	
 	DecimalsUp.MouseButton1Click:Connect(function()
-		Decimals.Text = tostring(tonumber(Decimals.Text) + 1)
+		if tonumber(Decimals.Text) < 3 then
+			Decimals.Text = tostring(tonumber(Decimals.Text) + 1)
+		end
 	end)
 	
 	DecimalsDown.MouseButton1Click:Connect(function()
