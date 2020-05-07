@@ -25,6 +25,6 @@ Credits:
 - Arilis - I based the way the script dumper outputs on his SirHurt Dumper - https://discord.gg/FZnrpQT
 - Hydroxide - I used their event icons - https://nrv-ous.xyz/hydroxide/discord
 
-The Http spy isn't here to be used for cracking, it's there as a tool to be bypassed. Don't get yourself blacklisted from paid scripts with it.
-
-I'm fairly certain most of this could be done alot more efficiently, so any improvements are welcomed, dm me on discord.
+Notes:
+- The Http Spy is not here for you to go and try to crack paid scripts with. If they're any decent they will be able to detect it and you will get blacklisted. It's here as a tool for script developers to try and bypass
+- Any suggestions / improvements are welcomed, dm me on Discord
