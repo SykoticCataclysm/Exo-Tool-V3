@@ -11,9 +11,7 @@ local CoreGui = game:GetService("CoreGui")
 
 local Plr = game:GetService("Players").LocalPlayer
 
-if not CoreGui:FindFirstChild("ExoToolV3") then
-	repeat wait() until game:IsLoaded()
-	
+if not CoreGui:FindFirstChild("ExoToolV3") then	
 	local gamename = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name
 	
 	local eventicons = {
