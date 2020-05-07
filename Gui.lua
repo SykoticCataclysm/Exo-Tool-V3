@@ -7,11 +7,11 @@ local ui = {
 	end
 }
 
-local CoreGui = game:GetService("CoreGui")
+local coregui = game:GetService("CoreGui")
 
-local Plr = game:GetService("Players").LocalPlayer
-
-if not CoreGui:FindFirstChild("ExoToolV3") then	
+if not coregui:FindFirstChild("ExoToolV3") then	
+	local userinput = game:GetService("UserInputService")
+	local plr = game:GetService("Players").LocalPlayer
 	local gamename = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name
 	
 	local eventicons = {
@@ -31,6 +31,7 @@ if not CoreGui:FindFirstChild("ExoToolV3") then
 	}
 	
 	local dumper = loadstring(game:HttpGet("https://raw.githubusercontent.com/SykoticCataclysm/Exo-Tool-V3/master/ScriptDumper.lua", true))()
+	local scanner = loadstring(game:HttpGet("https://raw.githubusercontent.com/SykoticCataclysm/Exo-Tool-V3/master/Scanner.lua", true))()
 	
 	local ExoToolV3 = Instance.new("ScreenGui")
 	local ScriptDumper = Instance.new("Frame")
@@ -74,9 +75,19 @@ if not CoreGui:FindFirstChild("ExoToolV3") then
 	local Decimals = Instance.new("TextLabel")
 	local DecimalsUp = Instance.new("TextButton")
 	local DecimalsDown = Instance.new("TextButton")
+	local UpvalueScanner = Instance.new("Frame")
+	local Title_4 = Instance.new("TextLabel")
+	local Results = Instance.new("ScrollingFrame")
+	local Template = Instance.new("Frame")
+	local Underline = Instance.new("TextLabel")
+	local ItemName = Instance.new("TextLabel")
+	local ItemValue = Instance.new("TextLabel")
+	local UpvalueSearch = Instance.new("TextBox")
+	
+	--Properties:
 	
 	ExoToolV3.Name = "ExoToolV3"
-	ExoToolV3.Parent = CoreGui
+	ExoToolV3.Parent = coregui
 	
 	ScriptDumper.Name = "ScriptDumper"
 	ScriptDumper.Parent = ExoToolV3
@@ -518,7 +529,105 @@ if not CoreGui:FindFirstChild("ExoToolV3") then
 	DecimalsDown.TextColor3 = Color3.new(1, 1, 1)
 	DecimalsDown.TextSize = 18
 	
+	UpvalueScanner.Name = "UpvalueScanner"
+	UpvalueScanner.Parent = ExoToolV3
+	UpvalueScanner.BackgroundColor3 = Color3.new(0.0784314, 0.0784314, 0.0784314)
+	UpvalueScanner.BackgroundTransparency = 0.5
+	UpvalueScanner.BorderColor3 = Color3.new(0, 0, 0)
+	UpvalueScanner.Position = UDim2.new(0, 220, 0, 95)
+	UpvalueScanner.Size = UDim2.new(0, 350, 0, 280)
+	UpvalueScanner.Visible = false
+	
+	Title_4.Name = "Title"
+	Title_4.Parent = UpvalueScanner
+	Title_4.BackgroundColor3 = Color3.new(1, 1, 1)
+	Title_4.BackgroundTransparency = 1
+	Title_4.Size = UDim2.new(1, 0, 0, 35)
+	Title_4.Font = Enum.Font.SourceSansSemibold
+	Title_4.Text = "Upvalue Scanner"
+	Title_4.TextColor3 = Color3.new(1, 1, 1)
+	Title_4.TextSize = 20
+	
+	Results.Name = "Results"
+	Results.Parent = UpvalueScanner
+	Results.Active = true
+	Results.BackgroundColor3 = Color3.new(1, 1, 1)
+	Results.BackgroundTransparency = 1
+	Results.BorderSizePixel = 0
+	Results.Position = UDim2.new(0, 0, 0, 70)
+	Results.Size = UDim2.new(0, 350, 0, 210)
+	Results.ScrollBarThickness = 5
+	
+	Template.Name = "Template"
+	Template.Parent = Results
+	Template.BackgroundColor3 = Color3.new(1, 1, 1)
+	Template.BackgroundTransparency = 1
+	Template.Size = UDim2.new(0, 345, 0, 30)
+	Template.Visible = false
+	
+	Underline.Name = "Underline"
+	Underline.Parent = Template
+	Underline.BackgroundColor3 = Color3.new(0.0784314, 0.0784314, 0.0784314)
+	Underline.BorderSizePixel = 0
+	Underline.Position = UDim2.new(0, 0, 1, 0)
+	Underline.Size = UDim2.new(0, 345, 0, 1)
+	Underline.Font = Enum.Font.SourceSans
+	Underline.Text = ""
+	Underline.TextColor3 = Color3.new(0, 0, 0)
+	Underline.TextSize = 14
+	
+	ItemName.Name = "ItemName"
+	ItemName.Parent = Template
+	ItemName.BackgroundColor3 = Color3.new(1, 1, 1)
+	ItemName.BackgroundTransparency = 1
+	ItemName.Position = UDim2.new(0, 5, 0, 0)
+	ItemName.Size = UDim2.new(0, 335, 0, 30)
+	ItemName.Font = Enum.Font.SourceSans
+	ItemName.Text = "Scan Result"
+	ItemName.TextColor3 = Color3.new(1, 1, 1)
+	ItemName.TextSize = 20
+	ItemName.TextXAlignment = Enum.TextXAlignment.Left
+	
+	ItemValue.Name = "ItemValue"
+	ItemValue.Parent = Template
+	ItemValue.BackgroundColor3 = Color3.new(1, 1, 1)
+	ItemValue.BackgroundTransparency = 1
+	ItemValue.Position = UDim2.new(0, 5, 0, 0)
+	ItemValue.Size = UDim2.new(0, 335, 0, 30)
+	ItemValue.Font = Enum.Font.SourceSans
+	ItemValue.Text = "Scan Value"
+	ItemValue.TextColor3 = Color3.new(1, 1, 1)
+	ItemValue.TextSize = 20
+	ItemValue.TextXAlignment = Enum.TextXAlignment.Right
+	
+	UpvalueSearch.Name = "UpvalueSearch"
+	UpvalueSearch.Parent = UpvalueScanner
+	UpvalueSearch.BackgroundColor3 = Color3.new(0, 0, 0)
+	UpvalueSearch.BackgroundTransparency = 0.60000002384186
+	UpvalueSearch.BorderColor3 = Color3.new(0, 0, 0)
+	UpvalueSearch.Position = UDim2.new(0, 5, 0, 40)
+	UpvalueSearch.Size = UDim2.new(1, -10, 0, 25)
+	UpvalueSearch.Font = Enum.Font.SourceSans
+	UpvalueSearch.PlaceholderColor3 = Color3.new(1, 1, 1)
+	UpvalueSearch.PlaceholderText = "[ Search ]"
+	UpvalueSearch.Text = ""
+	UpvalueSearch.TextColor3 = Color3.new(1, 1, 1)
+	UpvalueSearch.TextSize = 16
+	UpvalueSearch.TextStrokeTransparency = 0.60000002384186
+	
+	-- Setup
+	
+	local open = true
+	
+	userinput.InputBegan:Connect(function(input, istyping)
+		if not istyping and input.KeyCode == Enum.KeyCode.RightAlt then
+			open = not open
+			Selection:TweenSize(UDim2.new(0, open and 200 or 0, 1, 0))
+		end
+	end)
+	
 	local tabs = {
+		[UpvalueScannerBtn] = UpvalueScanner,
 		[ScriptDumperBtn] = ScriptDumper,
 		[PositionGrabberBtn] = PositionGrabber
 	}
@@ -533,6 +642,26 @@ if not CoreGui:FindFirstChild("ExoToolV3") then
 			b.Visible = not b.Visible
 		end)
 	end
+	
+	-- Upvalue Scanner
+	
+	UpvalueSearch.FocusLost:Connect(function(enterpressed)
+		if enterpressed then
+			for i, v in pairs(Results:GetChildren()) do
+				if v.Visible == true then
+					v:Destroy()
+				end
+			end
+			local results = scanner.scanupvalues(UpvalueSearch.Text)
+			for i, v in pairs(results) do
+				local template = Template:Clone()
+				template.ItemName.Text = i
+				template.ItemValue.Text = tostring(v)
+				template.Position = UDim2.new(0, 0, 0, 30 * (#Results:GetChildren() - 2))
+				Results.CanvasSize = UDim2.new(0, 0, 0, 30 * (#Results:GetChildren() - 1))
+			end
+		end
+	end)
 	
 	-- Script Dumper
 	
@@ -577,8 +706,8 @@ if not CoreGui:FindFirstChild("ExoToolV3") then
 	
 	coroutine.resume(coroutine.create(function()
 		while wait() do
-			if Plr.Character then
-				local pos = Plr.Character.HumanoidRootPart.Position
+			if plr.Character then
+				local pos = plr.Character.HumanoidRootPart.Position
 				local places = tonumber(Decimals.Text)
 				CurrentPos.Text = round(pos.X, places) .. ", " .. round(pos.Y, places) .. ", " .. round(pos.Z, places)
 			end
@@ -590,6 +719,6 @@ if not CoreGui:FindFirstChild("ExoToolV3") then
 	end)
 end
 
-ui.gui = CoreGui:WaitForChild("ExoToolV3")
+ui.gui = coregui:WaitForChild("ExoToolV3")
 
 return ui
