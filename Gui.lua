@@ -1,18 +1,10 @@
-local ui = {
-	options = {
-		httpspyenabled = true
-	},
-	log = function(txt)
-		warn("[Exo Tool V3]: " .. txt)
-	end
-}
-
 local coregui = game:GetService("CoreGui")
 
 if not coregui:FindFirstChild("ExoToolV3") then	
 	local userinput = game:GetService("UserInputService")
 	local plr = game:GetService("Players").LocalPlayer
 	local gamename = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name
+	local httplogs = {}
 	
 	local eventicons = {
 		["BindableEvent"] = "rbxassetid://4229809371",
@@ -722,6 +714,14 @@ if not coregui:FindFirstChild("ExoToolV3") then
 	end)
 end
 
-ui.gui = coregui:WaitForChild("ExoToolV3")
+ui = {
+	gui = coregui:WaitForChild("ExoToolV3"),
+	log = function(txt)
+		warn("[Exo Tool V3]: " .. txt)
+	end,
+	addhttplog = function(method, link, args)
+		ui.log(method .. " Called: " .. link)
+	end
+}
 
 return ui
