@@ -16,7 +16,7 @@ mt.__namecall = newcclosure(function(inst, ...)
 	local method = getnamecallmethod()
 	if methods[method] then
 		local args = {...}
-		ui.addhttplog(method, args[1], args:remove(1))
+		ui.addhttplog(method, args[1], {})
 	end
 	return nc(inst, ...)
 end)
