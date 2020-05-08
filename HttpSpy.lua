@@ -17,5 +17,5 @@ mt.__namecall = newcclosure(function(inst, link, ...)
 	if methods[method] then
 		ui.addhttplog(method, link, {...})
 	end
-	return nc(inst, ...)
+	return nc(inst, link, ...)
 end)
