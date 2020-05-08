@@ -716,12 +716,45 @@ end
 
 ui = {
 	gui = coregui:WaitForChild("ExoToolV3"),
+	tabletostring = function(item)
+		local str = "{ "
+		local max = #item
+		local num = 1
+		for i, v in pairs(item) do
+			str = str .. '["' .. ui.gettype(i) .. '"] = ' .. ui.gettype(v)
+			if num < max then
+				str = str .. ", "
+			end
+			num = num + 1
+		end
+		return str .. " }"
+	end,
+	gettype = function(item)
+		local types = {
+			BrickColor = string.format("BrickColor.new(%g)", item.Name),
+			CFrame = string.format("CFrame.new(%g, %g, %g, %g, %g, %g, %g, %g, %g, %g, %g, %g)", item:components()),
+			Color3 = string.format("Color3.fromRGB(%g, %g, %g)", item.R, item.G, item.B),
+			Instance = item:GetFullName(),
+			Ray = string.format("Ray.new(Vector3.new(%g, %g, %g), Vector3.new(%g, %g, %g))", item.Origin.X, item.Origin.Y, item.Origin.Z, item.Direction.X, item.Direction.Y, item.Direction.Z),
+			Rect = string.format("Rect.new(Vector2.new(%g, %g), Vector2.new(%g, %g))", item.Min.X, item.Min.Y, item.Max.X, item.Max.Y),
+			string = '"' .. item .. '"',
+			table = ui.tabletostring(item),
+			UDim2 = string.format("UDim2.new(%g, %g, %g, %g)", item.X.Scale, item.X.Offset, item.Y.Scale, item.Y.Offset),
+			Vector2 = string.format("Vector2.new(%g, %g)", item.X, item.Y),
+			Vector3 = string.format("Vector3.new(%g, %g, %g)", item.X, item.Y, item.Z)
+		}
+		return types[typeof(item)] or tostring(item)
+	end,
 	log = function(txt)
 		warn("[Exo Tool V3]: " .. txt)
 	end,
 	addhttplog = function(method, link, args)
 		ui.log(method .. " Called: " .. link)
-		ui.log("Arguments: " .. table.concat(args, ", "))
+		if #args == 0 then
+			ui.log("Arguments: None")
+		else
+			ui.log("Arguments: " .. ui.gettype(args))
+		end
 	end
 }
 
