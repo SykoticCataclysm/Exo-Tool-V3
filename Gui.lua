@@ -720,7 +720,7 @@ ui = {
 		warn("[Exo Tool V3]: " .. txt)
 	end,
 	addhttplog = function(method, link, args)
-		warn("[Exo Tool V3]: " .. method .. " Called: " .. link)
+		ui.log(method .. " Called: " .. link)
 	end
 }
 
