@@ -765,9 +765,11 @@ ui = {
 	addhttplog = function(method, link, args)
 		ui.log(method .. " Called: " .. link)
 		if #args == 0 then
-			ui.log("Arguments: None")
+			ui.log("No Arguments")
 		else
-			ui.log("Arguments: " .. ui.gettype(args))
+			for i, v in pairs(args) do
+				ui.log("Argument " .. tostring(i) .. ": " .. ui.gettype(v))
+			end
 		end
 	end
 }
