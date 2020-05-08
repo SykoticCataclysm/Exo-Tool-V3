@@ -721,6 +721,7 @@ ui = {
 	end,
 	addhttplog = function(method, link, args)
 		ui.log(method .. " Called: " .. link)
+		ui.log("Arguments: " .. table.concat(args, ", "))
 	end
 }
 
