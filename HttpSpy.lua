@@ -16,7 +16,7 @@ mt.__namecall = newcclosure(function(inst, ...)
 	local method = getnamecallmethod()
 	if methods[method] and ui.options.httpspyenabled then
 		local args = {...}
-		ui.log(method .. " Called: " .. args[1])
+		ui.addhttplog(method, args[1], args:remove(1))
 	end
 	return nc(inst, ...)
 end)
