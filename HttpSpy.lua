@@ -12,11 +12,10 @@ local mt = getrawmetatable(game)
 local nc = mt.__namecall
 setreadonly(mt, false)
 
-mt.__namecall = newcclosure(function(inst, ...)
+mt.__namecall = newcclosure(function(inst, link, ...)
 	local method = getnamecallmethod()
 	if methods[method] then
-		local args = {...}
-		ui.addhttplog(method, args[1], {})
+		ui.addhttplog(method, link, {...})
 	end
 	return nc(inst, ...)
 end)
